@@ -1072,10 +1072,7 @@
               <span>Phone</span>
               <a href="tel:+13439895043">+1-343-989-5043</a>
             </div>
-            <div class="contact-line">
-              <span>WhatsApp</span>
-              <a href="https://wa.me/13439895043">Message on WhatsApp</a>
-            </div>
+            
             <div class="contact-line">
               <span>Email</span>
               <a href="mailto:info@hbss.ca">info@hbss.ca</a>
@@ -1118,6 +1115,38 @@
       <p>© 2026 HB Sign Shop. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/13439895043" class="floating-whatsapp" aria-label="Chat on WhatsApp">
+    WhatsApp
+  </a>
+
+  <style>
+    .floating-whatsapp{
+      position:fixed;
+      right:18px;
+      bottom:90px;
+      z-index:1300;
+      background:#19a463;
+      color:#fff;
+      text-decoration:none;
+      padding:12px 16px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:14px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .floating-whatsapp:hover{
+      background:#148a52;
+    }
+
+    @media (min-width:768px){
+      .floating-whatsapp{
+        bottom:24px;
+      }
+    }
+  </style>
 
   <div class="sticky-mobile-cta" aria-label="Mobile contact actions">
     <a href="tel:+13439895043">Call</a>
