@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HB Sign Shop | Custom Signs & Printing</title>
+  <meta name="description" content="HB Sign Shop provides custom signs, banners, decals, vehicle graphics, window graphics, and print solutions for businesses in St. Albert, Edmonton, and surrounding areas." />
+
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #f7f8fa;
+      --light: #eef1f5;
+      --ink: #111827;
+      --muted: #5f6673;
+      --soft: #d9dee7;
+      --dark: #0b1220;
+      --accent: #1f4f8f;
+      --accent-dark: #173d70;
+      --accent-soft: #eaf2ff;
+      --line: #e5e9f0;
+      --success: #19a463;
+      --radius: 18px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.55;
+      padding-bottom: 74px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
+    }
+
+    .top-strip {
+      display: none;
+      background: var(--dark);
+      color: var(--white);
+      font-size: 13px;
+    }
+
+    .top-strip .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 0;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--dark);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      line-height: 1.1;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    .desktop-nav {
+      display: none;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .desktop-nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 999px;
+    }
+
+    .desktop-nav a:hover {
+      background: var(--off-white);
+    }
+
+    .header-actions {
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hamburger {
+      border: 1px solid var(--line);
+      background: var(--white);
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .hamburger span,
+    .hamburger span::before,
+    .hamburger span::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .hamburger span::before {
+      transform: translateY(-6px);
+    }
+
+    .hamburger span::after {
+      transform: translateY(4px);
+    }
+
+    .hamburger.active span {
+      background: transparent;
+    }
+
+    .hamburger.active span::before {
+      transform: rotate(45deg);
+    }
+
+    .hamburger.active span::after {
+      transform: translateY(-2px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+      padding: 12px 0 18px;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 14px 4px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mobile-menu .mobile-menu-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding-top: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-dark {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--dark);
+      border-color: var(--line);
+    }
+
+    .btn-whatsapp {
+      background: var(--success);
+      color: var(--white);
+    }
+
+    .hero {
+      background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 54px 0 38px;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      border: 1px solid #d8e8ff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(34px, 8vw, 68px);
+      line-height: 0.98;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+      max-width: 780px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(16px, 2.5vw, 20px);
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      max-width: 430px;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 18px;
+    }
+
+    .hero-image {
+      min-height: 260px;
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(31, 79, 143, 0.88), rgba(11, 18, 32, 0.9)),
+        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=70');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      color: var(--white);
+    }
+
+    .hero-image h3 {
+      font-size: 28px;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .hero-image p {
+      color: rgba(255, 255, 255, 0.82);
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .stat {
+      background: var(--off-white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    section {
+      scroll-margin-top: 90px;
+    }
+
+    .section {
+      padding: 58px 0;
+    }
+
+    .section-alt {
+      background: var(--off-white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -1.2px;
+      margin-bottom: 0;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 0;
+      font-size: 15px;
+    }
+
+    .service-card {
+      min-height: 166px;
+    }
+
+    .icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-panel {
+      background: var(--dark);
+      color: var(--white);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .about-panel p {
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 0;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      padding: 14px 16px;
+      background: var(--off-white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .portfolio-strip {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+      padding: 18px 0;
+    }
+
+    .portfolio-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: scrollGallery 42s linear infinite;
+    }
+
+    .portfolio-track:hover {
+      animation-play-state: paused;
+    }
+
+    .project-card {
+      width: 260px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      background: var(--light);
+    }
+
+    .project-card div {
+      padding: 14px;
+    }
+
+    .project-card strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .project-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    @keyframes scrollGallery {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .process-grid {
+      counter-reset: step;
+    }
+
+    .process-card {
+      position: relative;
+    }
+
+    .process-card::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .cta {
+      background: var(--dark);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 34px 22px;
+      display: grid;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 0;
+    }
+
+    .cta h2 {
+      margin-bottom: 10px;
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -1px;
+    }
+
+    .cta-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-line {
+      display: grid;
+      gap: 6px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--white);
+    }
+
+    .contact-line span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-line a,
+    .contact-line strong {
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .quote-box {
+      background: var(--off-white);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .quote-box input,
+    .quote-box textarea,
+    .quote-box select {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--soft);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font: inherit;
+      background: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .quote-box textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .site-footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 34px 0 96px;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .site-footer p,
+    .site-footer a {
+      color: rgba(255, 255, 255, 0.72);
+      text-decoration: none;
+      margin-bottom: 0;
+    }
+
+    .sticky-mobile-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1200;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      padding: 8px;
+      gap: 8px;
+    }
+
+    .sticky-mobile-cta a {
+      min-height: 50px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .sticky-mobile-cta a:nth-child(1) {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .sticky-mobile-cta a:nth-child(2) {
+      background: var(--success);
+      color: var(--white);
+    }
+
+    .sticky-mobile-cta a:nth-child(3) {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    @media (min-width: 480px) {
+      .hero-actions,
+      .cta-actions,
+      .mobile-menu .mobile-menu-actions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quick-stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .project-card {
+        width: 300px;
+      }
+    }
+
+    @media (min-width: 640px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding: 72px 0 52px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-bottom: 0;
+      }
+
+      .top-strip {
+        display: block;
+      }
+
+      .hamburger,
+      .mobile-menu,
+      .sticky-mobile-cta {
+        display: none !important;
+      }
+
+      .desktop-nav,
+      .header-actions {
+        display: flex;
+      }
+
+      .nav-wrap {
+        min-height: 78px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .hero-actions {
+        display: flex;
+        max-width: none;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .cta {
+        grid-template-columns: 1fr auto;
+        padding: 42px;
+      }
+
+      .cta-actions {
+        grid-template-columns: 1fr;
+        min-width: 230px;
+      }
+
+      .site-footer {
+        padding-bottom: 34px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hero-image {
+        min-height: 420px;
+      }
+
+      .section-head {
+        grid-template-columns: 0.8fr 1fr;
+        align-items: end;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .container {
+        width: min(100% - 56px, var(--container));
+      }
+
+      .project-card {
+        width: 340px;
+      }
+
+      .project-card img {
+        height: 210px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-strip">
+    <div class="container">
+      <span>Custom signs, decals, banners, vehicle graphics and print solutions.</span>
+      <span>Call: +1-343-989-5043</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrap">
+        <a href="#home" class="brand" aria-label="HB Sign Shop Home">
+          <div class="brand-mark">HB</div>
+          <div class="brand-text">
+            <strong>HB Sign Shop</strong>
+            <span>Signs • Print • Graphics</span>
+          </div>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-light" href="tel:+13439895043">Call</a>
+          <a class="btn btn-primary" href="#contact">Get Quote</a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="container">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+        <div class="mobile-menu-actions">
+          <a class="btn btn-dark" href="tel:+13439895043">Call Now</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/13439895043">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Local Sign & Print Shop</div>
+          <h1>Simple, clean signage for your business.</h1>
+          <p>We create custom signs, banners, decals, window graphics, vehicle graphics and printed materials for local businesses.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Request a Quote</a>
+            <a class="btn btn-light" href="https://wa.me/13439895043">Message on WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-image">
+            <div>
+              <h3>Designed. Printed. Installed.</h3>
+              <p>Practical signage support from concept to finished product.</p>
+            </div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><strong>Signs</strong><span>Storefront & indoor</span></div>
+            <div class="stat"><strong>Print</strong><span>Banners & posters</span></div>
+            <div class="stat"><strong>Decals</strong><span>Window & vehicle</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>What we make</h2>
+          <p>Basic, reliable signage and print products for offices, retail stores, restaurants, contractors, events and local organizations.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card service-card">
+            <div class="icon-box">01</div>
+            <h3>Storefront Signs</h3>
+            <p>Exterior and interior signs for shops, offices, clinics and commercial spaces.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon-box">02</div>
+            <h3>Banners & Posters</h3>
+            <p>Simple large-format printing for promotions, events, sales and temporary advertising.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon-box">03</div>
+            <h3>Window Decals</h3>
+            <p>Window lettering, hours, logo decals, frosted vinyl and promotional window graphics.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon-box">04</div>
+            <h3>Vehicle Graphics</h3>
+            <p>Basic vehicle lettering, decals and partial graphics for business vehicles.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon-box">05</div>
+            <h3>Channel Letters</h3>
+            <p>Custom dimensional letters and illuminated sign options for storefront branding.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon-box">06</div>
+            <h3>Print Services</h3>
+            <p>Business cards, flyers, stickers, labels, signs and other everyday print materials.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-alt">
+      <div class="container about-grid">
+        <div class="about-panel">
+          <h2>Local sign support without overcomplication.</h2>
+          <p>HB Sign Shop helps businesses get clear, professional signs and printed materials without making the process difficult. Send your idea, size, logo or reference and we will help with the next step.</p>
+        </div>
+
+        <div>
+          <ul class="list">
+            <li>Custom design and production support</li>
+            <li>Indoor and outdoor signage options</li>
+            <li>Business printing and promotional graphics</li>
+            <li>Simple quoting and clear communication</li>
+            <li>Pickup, delivery or installation options depending on the project</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Portfolio gallery</h2>
+          <p>A simple rolling gallery for sign, print and graphics examples. Replace these images with your real project photos whenever ready.</p>
+        </div>
+      </div>
+
+      <div class="portfolio-strip" aria-label="Infinite scrolling portfolio gallery">
+        <div class="portfolio-track">
+          <article class="project-card">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=70" alt="Office signage example" />
+            <div><strong>Office Signage</strong><span>Indoor branding</span></div>
+          </article>
+          <article class="project-card">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=70" alt="Exterior commercial sign example" />
+            <div><strong>Exterior Signs</strong><span>Business fronts</span></div>
+          </article>
+          <article class="project-card">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=70" alt="Print shop service example" />
+            <div><strong>Printed Materials</strong><span>Business print</span></div>
+          </article>
+          <article class="project-card">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=70" alt="Window graphics example" />
+            <div><strong>Window Graphics</strong><span>Decals and lettering</span></div>
+          </article>
+          <article class="project-card">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=900&q=70" alt="Custom display sign example" />
+            <div><strong>Custom Graphics</strong><span>Signs and displays</span></div>
+          </article>
+          <article class="project-card">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=70" alt="Commercial branding example" />
+            <div><strong>Commercial Branding</strong><span>Clean professional look</span></div>
+          </article>
+
+          <article class="project-card" aria-hidden="true">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=70" alt="" />
+            <div><strong>Office Signage</strong><span>Indoor branding</span></div>
+          </article>
+          <article class="project-card" aria-hidden="true">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=70" alt="" />
+            <div><strong>Exterior Signs</strong><span>Business fronts</span></div>
+          </article>
+          <article class="project-card" aria-hidden="true">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=70" alt="" />
+            <div><strong>Printed Materials</strong><span>Business print</span></div>
+          </article>
+          <article class="project-card" aria-hidden="true">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=70" alt="" />
+            <div><strong>Window Graphics</strong><span>Decals and lettering</span></div>
+          </article>
+          <article class="project-card" aria-hidden="true">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=900&q=70" alt="" />
+            <div><strong>Custom Graphics</strong><span>Signs and displays</span></div>
+          </article>
+          <article class="project-card" aria-hidden="true">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=70" alt="" />
+            <div><strong>Commercial Branding</strong><span>Clean professional look</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Simple process</h2>
+          <p>Send your project details and we will guide you through the basic steps from quote to finished sign.</p>
+        </div>
+
+        <div class="grid grid-3 process-grid">
+          <div class="card process-card">
+            <h3>Share your idea</h3>
+            <p>Send your logo, size, photos, location or reference design.</p>
+          </div>
+          <div class="card process-card">
+            <h3>Get a quote</h3>
+            <p>We provide pricing based on size, material, print type and installation needs.</p>
+          </div>
+          <div class="card process-card">
+            <h3>Production</h3>
+            <p>After approval, we prepare your sign, print or graphics for pickup or installation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Need a sign or print quote?</h2>
+            <p>Send the project details on WhatsApp or use the quick quote section below.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-whatsapp" href="https://wa.me/13439895043">WhatsApp Us</a>
+            <a class="btn btn-light" href="tel:+13439895043">Call Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-alt">
+      <div class="container contact-grid">
+        <div>
+          <div class="section-head">
+            <h2>Contact</h2>
+            <p>Reach out for signs, decals, banners, vehicle graphics, window lettering or print projects.</p>
+          </div>
+
+          <div class="grid">
+            <div class="contact-line">
+              <span>Phone</span>
+              <a href="tel:+13439895043">+1-343-989-5043</a>
+            </div>
+            <div class="contact-line">
+              <span>WhatsApp</span>
+              <a href="https://wa.me/13439895043">Message on WhatsApp</a>
+            </div>
+            <div class="contact-line">
+              <span>Email</span>
+              <a href="mailto:info@hbss.ca">info@hbss.ca</a>
+            </div>
+            <div class="contact-line">
+              <span>Service Area</span>
+              <strong>St. Albert, Edmonton & nearby areas</strong>
+            </div>
+          </div>
+        </div>
+
+        <form class="quote-box" action="mailto:info@hbss.ca" method="post" enctype="text/plain">
+          <h3>Quick Quote Request</h3>
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="tel" name="phone" placeholder="Phone number" />
+          <input type="email" name="email" placeholder="Email address" />
+          <select name="service">
+            <option value="">Select service</option>
+            <option>Storefront Sign</option>
+            <option>Banner / Poster</option>
+            <option>Window Decal</option>
+            <option>Vehicle Graphic</option>
+            <option>Channel Letters</option>
+            <option>Print Service</option>
+            <option>Other</option>
+          </select>
+          <textarea name="message" placeholder="Tell us what you need, size, quantity, timeline, or attach files by email after submitting."></textarea>
+          <button class="btn btn-primary" type="submit">Submit Request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>HB Sign Shop</strong>
+        <p>Custom signs, print and graphics for local businesses.</p>
+      </div>
+      <p>© 2026 HB Sign Shop. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="sticky-mobile-cta" aria-label="Mobile contact actions">
+    <a href="tel:+13439895043">Call</a>
+    <a href="https://wa.me/13439895043">WhatsApp</a>
+    <a href="#contact">Quote</a>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+
+    hamburger.addEventListener('click', function () {
+      const isOpen = mobileMenu.classList.toggle('active');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    mobileLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
