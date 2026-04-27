@@ -1,1177 +1,1499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HB Sign Shop | Custom Signs & Printing</title>
-  <meta name="description" content="HB Sign Shop provides custom signs, banners, decals, vehicle graphics, window graphics, and print solutions for businesses in St. Albert, Edmonton, and surrounding areas." />
 
-  <style>
-    :root {
-      --white: #ffffff;
-      --off-white: #f7f8fa;
-      --light: #eef1f5;
-      --ink: #111827;
-      --muted: #5f6673;
-      --soft: #d9dee7;
-      --dark: #0b1220;
-      --accent: #1f4f8f;
-      --accent-dark: #173d70;
-      --accent-soft: #eaf2ff;
-      --line: #e5e9f0;
-      --success: #19a463;
-      --radius: 18px;
-      --container: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
-      background: var(--white);
-      line-height: 1.55;
-      padding-bottom: 74px;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .container {
-      width: min(100% - 32px, var(--container));
-      margin: 0 auto;
-    }
-
-    .top-strip {
-      display: none;
-      background: var(--dark);
-      color: var(--white);
-      font-size: 13px;
-    }
-
-    .top-strip .container {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 8px 0;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-    }
-
-    .nav-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      min-height: 72px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--dark);
-      color: var(--white);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      letter-spacing: -0.8px;
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 16px;
-      letter-spacing: 0.3px;
-      line-height: 1.1;
-    }
-
-    .brand-text span {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 2px;
-      white-space: nowrap;
-    }
-
-    .desktop-nav {
-      display: none;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .desktop-nav a {
-      text-decoration: none;
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 14px;
-      padding: 10px 12px;
-      border-radius: 999px;
-    }
-
-    .desktop-nav a:hover {
-      background: var(--off-white);
-    }
-
-    .header-actions {
-      display: none;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .hamburger {
-      border: 1px solid var(--line);
-      background: var(--white);
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-    }
-
-    .hamburger span,
-    .hamburger span::before,
-    .hamburger span::after {
-      content: "";
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: var(--ink);
-      border-radius: 999px;
-      transition: 0.2s ease;
-    }
-
-    .hamburger span::before {
-      transform: translateY(-6px);
-    }
-
-    .hamburger span::after {
-      transform: translateY(4px);
-    }
-
-    .hamburger.active span {
-      background: transparent;
-    }
-
-    .hamburger.active span::before {
-      transform: rotate(45deg);
-    }
-
-    .hamburger.active span::after {
-      transform: translateY(-2px) rotate(-45deg);
-    }
-
-    .mobile-menu {
-      display: none;
-      border-top: 1px solid var(--line);
-      background: var(--white);
-      padding: 12px 0 18px;
-    }
-
-    .mobile-menu.active {
-      display: block;
-    }
-
-    .mobile-menu a {
-      display: block;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 14px 4px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .mobile-menu .mobile-menu-actions {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      padding-top: 14px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 12px 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 14px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--white);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-dark);
-    }
-
-    .btn-dark {
-      background: var(--dark);
-      color: var(--white);
-    }
-
-    .btn-light {
-      background: var(--white);
-      color: var(--dark);
-      border-color: var(--line);
-    }
-
-    .btn-whatsapp {
-      background: var(--success);
-      color: var(--white);
-    }
-
-    .hero {
-      background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
-      border-bottom: 1px solid var(--line);
-      padding: 54px 0 38px;
-    }
-
-    .hero-grid {
-      display: grid;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-soft);
-      color: var(--accent-dark);
-      border: 1px solid #d8e8ff;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 18px;
-    }
-
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
-
-    h1 {
-      font-size: clamp(34px, 8vw, 68px);
-      line-height: 0.98;
-      letter-spacing: -2px;
-      margin-bottom: 18px;
-      max-width: 780px;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: clamp(16px, 2.5vw, 20px);
-      max-width: 720px;
-      margin-bottom: 24px;
-    }
-
-    .hero-actions {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      max-width: 430px;
-    }
-
-    .hero-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 18px;
-    }
-
-    .hero-image {
-      min-height: 260px;
-      border-radius: 20px;
-      background:
-        linear-gradient(135deg, rgba(31, 79, 143, 0.88), rgba(11, 18, 32, 0.9)),
-        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=70');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-      color: var(--white);
-    }
-
-    .hero-image h3 {
-      font-size: 28px;
-      line-height: 1.05;
-      margin-bottom: 8px;
-    }
-
-    .hero-image p {
-      color: rgba(255, 255, 255, 0.82);
-      margin-bottom: 0;
-      font-size: 14px;
-    }
-
-    .quick-stats {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .stat {
-      background: var(--off-white);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    .stat span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 6px;
-    }
-
-    section {
-      scroll-margin-top: 90px;
-    }
-
-    .section {
-      padding: 58px 0;
-    }
-
-    .section-alt {
-      background: var(--off-white);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-head {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 26px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(28px, 5vw, 44px);
-      line-height: 1.05;
-      letter-spacing: -1.2px;
-      margin-bottom: 0;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      max-width: 680px;
-      margin-bottom: 0;
-    }
-
-    .grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-    }
-
-    .card h3 {
-      margin-bottom: 8px;
-      font-size: 19px;
-    }
-
-    .card p {
-      color: var(--muted);
-      margin-bottom: 0;
-      font-size: 15px;
-    }
-
-    .service-card {
-      min-height: 166px;
-    }
-
-    .icon-box {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--accent-soft);
-      color: var(--accent-dark);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    .about-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .about-panel {
-      background: var(--dark);
-      color: var(--white);
-      border-radius: 24px;
-      padding: 28px;
-    }
-
-    .about-panel p {
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: 0;
-    }
-
-    .list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .list li {
-      padding: 14px 16px;
-      background: var(--off-white);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      color: var(--ink);
-      font-weight: 700;
-    }
-
-    .portfolio-strip {
-      overflow: hidden;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: var(--white);
-      padding: 18px 0;
-    }
-
-    .portfolio-track {
-      display: flex;
-      gap: 16px;
-      width: max-content;
-      animation: scrollGallery 42s linear infinite;
-    }
-
-    .portfolio-track:hover {
-      animation-play-state: paused;
-    }
-
-    .project-card {
-      width: 260px;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      background: var(--light);
-    }
-
-    .project-card div {
-      padding: 14px;
-    }
-
-    .project-card strong {
-      display: block;
-      font-size: 15px;
-    }
-
-    .project-card span {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 3px;
-    }
-
-    @keyframes scrollGallery {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    .process-grid {
-      counter-reset: step;
-    }
-
-    .process-card {
-      position: relative;
-    }
-
-    .process-card::before {
-      counter-increment: step;
-      content: counter(step);
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: var(--dark);
-      color: var(--white);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      margin-bottom: 16px;
-    }
-
-    .cta {
-      background: var(--dark);
-      color: var(--white);
-      border-radius: 28px;
-      padding: 34px 22px;
-      display: grid;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .cta p {
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: 0;
-    }
-
-    .cta h2 {
-      margin-bottom: 10px;
-      font-size: clamp(28px, 5vw, 42px);
-      line-height: 1.08;
-      letter-spacing: -1px;
-    }
-
-    .cta-actions {
-      display: grid;
-      gap: 10px;
-    }
-
-    .contact-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .contact-line {
-      display: grid;
-      gap: 6px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: var(--white);
-    }
-
-    .contact-line span {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .contact-line a,
-    .contact-line strong {
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .quote-box {
-      background: var(--off-white);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .quote-box input,
-    .quote-box textarea,
-    .quote-box select {
-      width: 100%;
-      min-height: 48px;
-      border: 1px solid var(--soft);
-      border-radius: 14px;
-      padding: 12px 14px;
-      font: inherit;
-      background: var(--white);
-      margin-bottom: 12px;
-    }
-
-    .quote-box textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .site-footer {
-      background: var(--dark);
-      color: var(--white);
-      padding: 34px 0 96px;
-    }
-
-    .footer-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .site-footer p,
-    .site-footer a {
-      color: rgba(255, 255, 255, 0.72);
-      text-decoration: none;
-      margin-bottom: 0;
-    }
-
-    .sticky-mobile-cta {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 1200;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: var(--white);
-      border-top: 1px solid var(--line);
-      padding: 8px;
-      gap: 8px;
-    }
-
-    .sticky-mobile-cta a {
-      min-height: 50px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .sticky-mobile-cta a:nth-child(1) {
-      background: var(--dark);
-      color: var(--white);
-    }
-
-    .sticky-mobile-cta a:nth-child(2) {
-      background: var(--success);
-      color: var(--white);
-    }
-
-    .sticky-mobile-cta a:nth-child(3) {
-      background: var(--accent);
-      color: var(--white);
-    }
-
-    @media (min-width: 480px) {
-      .hero-actions,
-      .cta-actions,
-      .mobile-menu .mobile-menu-actions {
-        grid-template-columns: repeat(2, 1fr);
+  <!-- ═══════════════════════════════════════
+       META & SEO
+  ═══════════════════════════════════════ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Sign Shop Edmonton — Custom Business Signage & Print | Billo Signs & Graphics</title>
+
+  <meta name="description" content="Billo Signs is Edmonton's trusted sign shop. Custom channel letters, LED signs, vehicle decals/stickers, storefront signs, business cards & print — designed, built, and installed by one team. Free quote in 24 hours.">
+  <meta name="keywords" content="sign shop Edmonton, custom signs Edmonton, business signs Edmonton, signage company Edmonton Alberta, channel letters Edmonton, vehicle decals/stickers Edmonton, large format printing Edmonton, graphic design Edmonton, business cards Edmonton, colour copies Edmonton">
+  <meta name="author" content="Billo Signs & Graphics">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://billosigns.ca/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://billosigns.ca/">
+  <meta property="og:title" content="Sign Shop Edmonton — Custom Business Signage & Print | Billo Signs">
+  <meta property="og:description" content="Fast, clear signage for Edmonton & Alberta. Design to install — one team, no runaround. Free quote in 24 hours.">
+  <meta property="og:image" content="https://billosigns.ca/images/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sign Shop Edmonton — Billo Signs & Graphics">
+  <meta name="twitter:description" content="Custom signage and print for Edmonton businesses. One team. No runaround.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css?v=5.3">
+
+  <!-- ═══════════════════════════════════════
+       SCHEMA MARKUP
+  ═══════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Billo Signs & Graphics",
+    "description": "Custom signage and print company in Edmonton, Alberta. Channel letters, LED signs, vehicle decals/stickers, storefront signs, business cards, graphic design and more.",
+    "url": "https://billosigns.ca",
+    "telephone": "+15485773748",
+    "email": "hello@billosigns.ca",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Edmonton",
+      "addressRegion": "AB",
+      "addressCountry": "CA"
+    },
+    "areaServed": [
+      "Edmonton","St. Albert","Sherwood Park","Spruce Grove",
+      "Leduc","Red Deer","Hinton","Edson","Jasper","Fort McMurray"
+    ],
+    "serviceType": [
+      "Custom Signage","Channel Letter Signs","LED Signs","Vehicle Decals/Stickers",
+      "Window Graphics","Lightbox Signs","Interior Branding",
+      "Business Cards","Graphic Design","Large Format Printing",
+      "Colour Copies","Website Design"
+    ],
+    "priceRange": "$$"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does signage cost in Edmonton?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most signage projects range from a few hundred to several thousand dollars depending on size, materials, and type. Billo Signs provides clear, itemized quotes within 24 hours."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to make a custom sign in Edmonton?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most projects take 3–10 business days depending on complexity. We provide a clear timeline upfront and stick to it. Rush timelines are often available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you handle design, production, and installation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — Billo Signs handles the entire process in-house. Design, production, and installation managed by one team. One point of contact throughout."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you serve areas outside Edmonton?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — we serve St. Albert, Sherwood Park, Spruce Grove, Leduc, Red Deer, Hinton, Edson, Jasper, and Fort McMurray."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer print services like business cards and flyers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — Billo Signs offers full print services including business cards, postcards, flyers, brochures, labels, colour copies, engineering copy, bindings, lamination, and more."
+        }
       }
+    ]
+  }
+  </script>
 
-      .quick-stats {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .project-card {
-        width: 300px;
-      }
-    }
-
-    @media (min-width: 640px) {
-      .grid-2 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero {
-        padding: 72px 0 52px;
-      }
-
-      .section {
-        padding: 72px 0;
-      }
-    }
-
-    @media (min-width: 768px) {
-      body {
-        padding-bottom: 0;
-      }
-
-      .top-strip {
-        display: block;
-      }
-
-      .hamburger,
-      .mobile-menu,
-      .sticky-mobile-cta {
-        display: none !important;
-      }
-
-      .desktop-nav,
-      .header-actions {
-        display: flex;
-      }
-
-      .nav-wrap {
-        min-height: 78px;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1.1fr 0.9fr;
-      }
-
-      .hero-actions {
-        display: flex;
-        max-width: none;
-      }
-
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 0.9fr 1.1fr;
-      }
-
-      .cta {
-        grid-template-columns: 1fr auto;
-        padding: 42px;
-      }
-
-      .cta-actions {
-        grid-template-columns: 1fr;
-        min-width: 230px;
-      }
-
-      .site-footer {
-        padding-bottom: 34px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr auto;
-        align-items: center;
-      }
-    }
-
-    @media (min-width: 980px) {
-      .grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .hero-image {
-        min-height: 420px;
-      }
-
-      .section-head {
-        grid-template-columns: 0.8fr 1fr;
-        align-items: end;
-      }
-    }
-
-    @media (min-width: 1280px) {
-      .container {
-        width: min(100% - 56px, var(--container));
-      }
-
-      .project-card {
-        width: 340px;
-      }
-
-      .project-card img {
-        height: 210px;
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <div class="top-strip">
-    <div class="container">
-      <span>Custom signs, decals, banners, vehicle graphics and print solutions.</span>
-      <span>Call: +1-343-989-5043</span>
-    </div>
-  </div>
+  <!-- ═══════════════════════════════════════
+       HEADER / NAV
+  ═══════════════════════════════════════ -->
+  <header class="site-header" id="siteHeader" role="banner">
+    <div class="container header-inner">
 
-  <header class="site-header">
-    <div class="container">
-      <div class="nav-wrap">
-        <a href="#home" class="brand" aria-label="HB Sign Shop Home">
-          <div class="brand-mark">HB</div>
-          <div class="brand-text">
-            <strong>HB Sign Shop</strong>
-            <span>Signs • Print • Graphics</span>
-          </div>
+      <!-- Logo -->
+      <a href="#" class="nav-logo" aria-label="Billo Signs Home">
+        <span class="logo-text">BILLO<span class="logo-dot">.</span>SIGNS</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#signage" class="nav-link">Signage</a></li>
+          <li><a href="#print" class="nav-link">Print & Design</a></li>
+          <li><a href="#process" class="nav-link">How It Works</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <a href="https://wa.me/15485773748?text=Hi%20Billo%20Signs%2C%20I%20need%20a%20quick%20quote" class="btn btn-ghost btn-sm" target="_blank" rel="noopener" aria-label="WhatsApp Billo Signs">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
         </a>
-
-        <nav class="desktop-nav" aria-label="Main navigation">
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#process">Process</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <div class="header-actions">
-          <a class="btn btn-light" href="tel:+13439895043">Call</a>
-          <a class="btn btn-primary" href="#contact">Get Quote</a>
-        </div>
-
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
-          <span></span>
-        </button>
+        <a href="#quote" class="btn btn-gold btn-sm">Get a Quote</a>
       </div>
-    </div>
 
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="container">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
-        <div class="mobile-menu-actions">
-          <a class="btn btn-dark" href="tel:+13439895043">Call Now</a>
-          <a class="btn btn-whatsapp" href="https://wa.me/13439895043">WhatsApp</a>
-        </div>
-      </div>
+      <!-- Hamburger -->
+      <button class="ham-btn" id="hamBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <span class="ham-bar"></span>
+        <span class="ham-bar"></span>
+        <span class="ham-bar"></span>
+      </button>
+
     </div>
   </header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Local Sign & Print Shop</div>
-          <h1>Simple, clean signage for your business.</h1>
-          <p>We create custom signs, banners, decals, window graphics, vehicle graphics and printed materials for local businesses.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Request a Quote</a>
-            <a class="btn btn-light" href="https://wa.me/13439895043">Message on WhatsApp</a>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="hero-image">
-            <div>
-              <h3>Designed. Printed. Installed.</h3>
-              <p>Practical signage support from concept to finished product.</p>
-            </div>
-          </div>
-          <div class="quick-stats">
-            <div class="stat"><strong>Signs</strong><span>Storefront & indoor</span></div>
-            <div class="stat"><strong>Print</strong><span>Banners & posters</span></div>
-            <div class="stat"><strong>Decals</strong><span>Window & vehicle</span></div>
-          </div>
-        </div>
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-label="Mobile Navigation" aria-modal="true" hidden>
+    <nav aria-label="Mobile Navigation">
+      <ul class="mob-nav-list">
+        <li><a href="#signage" class="mob-nav-link">Signage Services <span class="mob-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="#print" class="mob-nav-link">Print &amp; Design <span class="mob-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="#process" class="mob-nav-link">How It Works <span class="mob-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="#portfolio" class="mob-nav-link">Portfolio <span class="mob-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="#faq" class="mob-nav-link">FAQ <span class="mob-arrow" aria-hidden="true">→</span></a></li>
+      </ul>
+      <div class="mob-cta-group">
+        <a href="#quote" class="btn btn-gold mob-cta-btn">Get a Free Quote →</a>
+        <a href="https://wa.me/15485773748" class="btn btn-wa mob-cta-btn" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
       </div>
-    </section>
+    </nav>
+  </div>
 
-    <section id="services" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>What we make</h2>
-          <p>Basic, reliable signage and print products for offices, retail stores, restaurants, contractors, events and local organizations.</p>
-        </div>
+  <main id="main" role="main">
 
-        <div class="grid grid-3">
-          <div class="card service-card">
-            <div class="icon-box">01</div>
-            <h3>Storefront Signs</h3>
-            <p>Exterior and interior signs for shops, offices, clinics and commercial spaces.</p>
-          </div>
-          <div class="card service-card">
-            <div class="icon-box">02</div>
-            <h3>Banners & Posters</h3>
-            <p>Simple large-format printing for promotions, events, sales and temporary advertising.</p>
-          </div>
-          <div class="card service-card">
-            <div class="icon-box">03</div>
-            <h3>Window Decals</h3>
-            <p>Window lettering, hours, logo decals, frosted vinyl and promotional window graphics.</p>
-          </div>
-          <div class="card service-card">
-            <div class="icon-box">04</div>
-            <h3>Vehicle Graphics</h3>
-            <p>Basic vehicle lettering, decals and partial graphics for business vehicles.</p>
-          </div>
-          <div class="card service-card">
-            <div class="icon-box">05</div>
-            <h3>Channel Letters</h3>
-            <p>Custom dimensional letters and illuminated sign options for storefront branding.</p>
-          </div>
-          <div class="card service-card">
-            <div class="icon-box">06</div>
-            <h3>Print Services</h3>
-            <p>Business cards, flyers, stickers, labels, signs and other everyday print materials.</p>
-          </div>
-        </div>
+    <!-- ═══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
+    <section class="section hero-section" id="hero" aria-label="Hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grid-lines"></div>
+        <div class="hero-glow hero-glow--right"></div>
+        <div class="hero-glow hero-glow--left"></div>
       </div>
-    </section>
+      <div class="container hero-inner">
+        <div class="hero-content">
 
-    <section id="about" class="section section-alt">
-      <div class="container about-grid">
-        <div class="about-panel">
-          <h2>Local sign support without overcomplication.</h2>
-          <p>HB Sign Shop helps businesses get clear, professional signs and printed materials without making the process difficult. Send your idea, size, logo or reference and we will help with the next step.</p>
-        </div>
+          <div class="hero-eyebrow reveal" aria-label="Location badge">
+            <span class="hero-pulse" aria-hidden="true"></span>
+            <span>Sign Shop Edmonton &amp; Alberta</span>
+          </div>
 
-        <div>
-          <ul class="list">
-            <li>Custom design and production support</li>
-            <li>Indoor and outdoor signage options</li>
-            <li>Business printing and promotional graphics</li>
-            <li>Simple quoting and clear communication</li>
-            <li>Pickup, delivery or installation options depending on the project</li>
+          <p class="hero-tagline reveal reveal-d1" aria-hidden="true">Fast. Clear. Done Right.</p>
+
+          <h1 class="hero-h1 reveal reveal-d2">
+            Custom Business<br>
+            Signage &amp; Print in<br>
+            <em>Edmonton</em> —<br>
+            Without the Headaches
+          </h1>
+
+          <p class="hero-sub reveal reveal-d3">
+            Opening a new location and need everything ready on time — without chasing vendors?
+          </p>
+          <p class="hero-sub hero-sub--dim reveal reveal-d4">
+            Design, production &amp; installation. Business cards, banners, wraps &amp; more.<br>
+            One team. One call. No runaround.
+          </p>
+
+          <div class="hero-ctas reveal reveal-d5">
+            <a href="#quote" class="btn btn-gold btn-lg">
+              Get Pricing in 30 Seconds
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/15485773748?text=Hi%20Billo%20Signs%2C%20I%20need%20a%20quick%20quote" class="btn btn-wa btn-lg" target="_blank" rel="noopener" aria-label="Get instant quote on WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Instant WhatsApp Quote
+            </a>
+            <a href="tel:+15485773748" class="btn btn-ghost btn-lg" aria-label="Call Billo Signs">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              Call Us
+            </a>
+          </div>
+
+          <ul class="hero-trust reveal reveal-d5" aria-label="Trust indicators">
+            <li class="trust-item">
+              <span class="trust-check" aria-hidden="true">✓</span>
+              <span>Response within 24 hours</span>
+            </li>
+            <li class="trust-item">
+              <span class="trust-check" aria-hidden="true">✓</span>
+              <span>No obligation quote</span>
+            </li>
+            <li class="trust-item">
+              <span class="trust-check" aria-hidden="true">✓</span>
+              <span>Clear itemized pricing</span>
+            </li>
+            <li class="trust-item">
+              <span class="trust-check" aria-hidden="true">✓</span>
+              <span>One team, end-to-end</span>
+            </li>
           </ul>
+
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-line"></span>
+        <span>Scroll to explore</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PROOF / STATS BAR
+    ═══════════════════════════════════════ -->
+    <section class="proof-bar" aria-label="Business Statistics">
+      <div class="container">
+        <ul class="proof-list">
+          <li class="proof-item reveal">
+            <span class="proof-num"><span class="count" data-target="50">0</span><sup>+</sup></span>
+            <span class="proof-label">Projects Completed</span>
+          </li>
+          <li class="proof-item reveal reveal-d1">
+            <span class="proof-num"><span class="count" data-target="10">0</span><sup>+</sup></span>
+            <span class="proof-label">Cities Served Across Alberta</span>
+          </li>
+          <li class="proof-item reveal reveal-d2">
+            <span class="proof-num"><span class="count" data-target="24">0</span><sup>h</sup></span>
+            <span class="proof-label">Quote Turnaround</span>
+          </li>
+          <li class="proof-item reveal reveal-d3">
+            <span class="proof-num"><span class="count" data-target="5">0</span><sup>★</sup></span>
+            <span class="proof-label">Client Rating</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         WHY SWITCH (BEFORE / AFTER)
+    ═══════════════════════════════════════ -->
+    <section class="section section-dark" id="why" aria-labelledby="why-heading">
+      <div class="container">
+        <span class="section-tag reveal" aria-label="Section label">Why Businesses Switch to Billo Signs</span>
+        <h2 class="section-heading reveal reveal-d1" id="why-heading">
+          What you used to deal with.<br>What you get now.
+        </h2>
+        <p class="section-desc reveal reveal-d2">
+          Most sign shops leave you chasing updates and fixing mistakes. Here's what changes when you work with us.
+        </p>
+        <div class="switch-grid">
+
+          <article class="switch-card reveal">
+            <div class="switch-icon" aria-hidden="true">⏱</div>
+            <div class="switch-badges">
+              <span class="badge badge--bad">✕ &nbsp;Weeks of delays, zero updates</span>
+              <span class="badge badge--good">✓ &nbsp;Quote back within 24 hours</span>
+            </div>
+            <h3 class="switch-title">Speed Without Cutting Corners</h3>
+            <p class="switch-body">We manage every stage in-house. No waiting on third parties, no handoffs, no excuses.</p>
+          </article>
+
+          <article class="switch-card reveal reveal-d1">
+            <div class="switch-icon" aria-hidden="true">📞</div>
+            <div class="switch-badges">
+              <span class="badge badge--bad">✕ &nbsp;Chasing vendors for updates</span>
+              <span class="badge badge--good">✓ &nbsp;One clear point of contact</span>
+            </div>
+            <h3 class="switch-title">Clear Communication Every Step</h3>
+            <p class="switch-body">You always know what's happening and when. No guessing. No runaround. Just straight answers.</p>
+          </article>
+
+          <article class="switch-card reveal reveal-d2">
+            <div class="switch-icon" aria-hidden="true">🎨</div>
+            <div class="switch-badges">
+              <span class="badge badge--bad">✕ &nbsp;Sign doesn't match your brand</span>
+              <span class="badge badge--good">✓ &nbsp;Mockup approved before production</span>
+            </div>
+            <h3 class="switch-title">You See It Before We Build It</h3>
+            <p class="switch-body">We show you a full design mockup first. You approve it. Then and only then do we produce.</p>
+          </article>
+
+          <article class="switch-card reveal reveal-d3">
+            <div class="switch-icon" aria-hidden="true">🔧</div>
+            <div class="switch-badges">
+              <span class="badge badge--bad">✕ &nbsp;Designer blames the installer</span>
+              <span class="badge badge--good">✓ &nbsp;One team, full accountability</span>
+            </div>
+            <h3 class="switch-title">End-to-End Ownership</h3>
+            <p class="switch-body">Design, production, installation — all handled by us. If anything's off, we fix it. No finger-pointing.</p>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <section id="portfolio" class="section">
+    <!-- ═══════════════════════════════════════
+         PROBLEM SECTION
+    ═══════════════════════════════════════ -->
+    <section class="section" id="problem" aria-labelledby="problem-heading">
       <div class="container">
-        <div class="section-head">
-          <h2>Portfolio gallery</h2>
-          <p>A simple rolling gallery for sign, print and graphics examples. Replace these images with your real project photos whenever ready.</p>
-        </div>
-      </div>
-
-      <div class="portfolio-strip" aria-label="Infinite scrolling portfolio gallery">
-        <div class="portfolio-track">
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=70" alt="Office signage example" />
-            <div><strong>Office Signage</strong><span>Indoor branding</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=70" alt="Exterior commercial sign example" />
-            <div><strong>Exterior Signs</strong><span>Business fronts</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=70" alt="Print shop service example" />
-            <div><strong>Printed Materials</strong><span>Business print</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=70" alt="Window graphics example" />
-            <div><strong>Window Graphics</strong><span>Decals and lettering</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=900&q=70" alt="Custom display sign example" />
-            <div><strong>Custom Graphics</strong><span>Signs and displays</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=70" alt="Commercial branding example" />
-            <div><strong>Commercial Branding</strong><span>Clean professional look</span></div>
-          </article>
-
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Office Signage</strong><span>Indoor branding</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Exterior Signs</strong><span>Business fronts</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Printed Materials</strong><span>Business print</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Window Graphics</strong><span>Decals and lettering</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Custom Graphics</strong><span>Signs and displays</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Commercial Branding</strong><span>Clean professional look</span></div>
-          </article>
+        <span class="section-tag reveal">Sound Familiar?</span>
+        <h2 class="section-heading reveal reveal-d1" id="problem-heading">
+          Most Sign Projects in Edmonton<br>Don't Go the Way They Should
+        </h2>
+        <div class="problem-grid">
+          <div class="problem-left reveal">
+            <p class="body-text">
+              You hire someone expecting a simple job… and suddenly you're doing constant follow-ups, dealing with delays, and handling last-minute fixes.
+            </p>
+            <ul class="problem-list" aria-label="Common signage problems">
+              <li class="problem-item">
+                <span class="prob-x" aria-hidden="true">✕</span>
+                Sign isn't ready before your opening day
+              </li>
+              <li class="problem-item">
+                <span class="prob-x" aria-hidden="true">✕</span>
+                Design doesn't actually match your brand
+              </li>
+              <li class="problem-item">
+                <span class="prob-x" aria-hidden="true">✕</span>
+                Installer blames the designer — nobody takes ownership
+              </li>
+              <li class="problem-item">
+                <span class="prob-x" aria-hidden="true">✕</span>
+                No clear timelines, no straight answers
+              </li>
+            </ul>
+          </div>
+          <aside class="pain-box reveal reveal-d2" aria-label="Cost of signage delays">
+            <h3 class="pain-title">And That Costs You More Than Just Money</h3>
+            <ul class="pain-list">
+              <li class="pain-item">
+                <span class="pain-dot" aria-hidden="true"></span>
+                Lost customers on opening day — first impressions don't get a second chance
+              </li>
+              <li class="pain-item">
+                <span class="pain-dot" aria-hidden="true"></span>
+                A weak storefront that undermines your brand before anyone walks in
+              </li>
+              <li class="pain-item">
+                <span class="pain-dot" aria-hidden="true"></span>
+                Hours wasted going back and forth instead of running your business
+              </li>
+              <li class="pain-item">
+                <span class="pain-dot" aria-hidden="true"></span>
+                Paying again to fix what should've been done right the first time
+              </li>
+            </ul>
+            <p class="pain-footer">
+              What should be a simple job turns into constant follow-ups, delays, and last-minute fixes.
+            </p>
+          </aside>
         </div>
       </div>
     </section>
 
-    <section id="process" class="section section-alt">
+    <!-- ═══════════════════════════════════════
+         AGITATION STRIP
+    ═══════════════════════════════════════ -->
+    <div class="agit-strip" role="complementary" aria-label="Impact of delays">
       <div class="container">
-        <div class="section-head">
-          <h2>Simple process</h2>
-          <p>Send your project details and we will guide you through the basic steps from quote to finished sign.</p>
-        </div>
+        <h2 class="agit-heading reveal">Every Day of Delay Costs You</h2>
+        <ul class="agit-grid">
+          <li class="agit-card reveal">
+            <strong>Opening Day Missed</strong>
+            <span>No sign up — customers walk past without stopping.</span>
+          </li>
+          <li class="agit-card reveal reveal-d1">
+            <strong>Weak First Impression</strong>
+            <span>A bad sign tells customers your business doesn't care about quality.</span>
+          </li>
+          <li class="agit-card reveal reveal-d2">
+            <strong>Wasted Time</strong>
+            <span>Hours chasing vendors instead of building your business.</span>
+          </li>
+          <li class="agit-card reveal reveal-d3">
+            <strong>Paying Twice</strong>
+            <span>Rework and corrections pile up hidden costs you didn't budget for.</span>
+          </li>
+        </ul>
+        <p class="agit-footer reveal">
+          Most sign companies know this happens.
+          <strong>Billo Signs is built specifically to prevent it.</strong>
+        </p>
+      </div>
+    </div>
 
-        <div class="grid grid-3 process-grid">
-          <div class="card process-card">
-            <h3>Share your idea</h3>
-            <p>Send your logo, size, photos, location or reference design.</p>
-          </div>
-          <div class="card process-card">
-            <h3>Get a quote</h3>
-            <p>We provide pricing based on size, material, print type and installation needs.</p>
-          </div>
-          <div class="card process-card">
-            <h3>Production</h3>
-            <p>After approval, we prepare your sign, print or graphics for pickup or installation.</p>
-          </div>
+    <!-- ═══════════════════════════════════════
+         SOLUTION
+    ═══════════════════════════════════════ -->
+    <section class="section section-dark" id="solution" aria-labelledby="solution-heading">
+      <div class="container">
+        <span class="section-tag reveal">The Better Way</span>
+        <h2 class="section-heading reveal reveal-d1" id="solution-heading">
+          Complete Signage &amp; Print Services<br>in Edmonton — Done Right
+        </h2>
+        <p class="section-desc reveal reveal-d2">
+          We take full ownership of your project — from first idea to final install.
+        </p>
+        <div class="solution-grid">
+          <article class="solution-card reveal">
+            <div class="sol-check" aria-hidden="true">✓</div>
+            <div>
+              <h3>Fast Response Times</h3>
+              <p>Quote back within 24 hours, every time. We move quickly because our full process is in-house.</p>
+            </div>
+          </article>
+          <article class="solution-card reveal reveal-d1">
+            <div class="sol-check" aria-hidden="true">✓</div>
+            <div>
+              <h3>Clear Communication</h3>
+              <p>You always know what's happening, what it costs, and when it's done. No runaround. Ever.</p>
+            </div>
+          </article>
+          <article class="solution-card reveal reveal-d2">
+            <div class="sol-check" aria-hidden="true">✓</div>
+            <div>
+              <h3>No Back-and-Forth Confusion</h3>
+              <p>One team handles everything — design, production, installation. No confusion about who's responsible.</p>
+            </div>
+          </article>
+          <article class="solution-card reveal reveal-d3">
+            <div class="sol-check" aria-hidden="true">✓</div>
+            <div>
+              <h3>Consistent Quality</h3>
+              <p>Your brand looks sharp and professional — exactly the way you approved it in your mockup.</p>
+            </div>
+          </article>
         </div>
+        <p class="solution-kicker reveal">One team. One process. <em>Done right.</em></p>
       </div>
     </section>
 
-    <section class="section">
+    <!-- ═══════════════════════════════════════
+         SERVICES OVERVIEW — Design, Print & Signage
+    ═══════════════════════════════════════ -->
+    <section class="section" id="signage" aria-labelledby="signage-heading">
       <div class="container">
-        <div class="cta">
+
+        <!-- Intro -->
+        <span class="section-tag reveal">Design, Print &amp; Signage — All in One Place</span>
+        <h2 class="section-heading reveal reveal-d1" id="signage-heading">
+          Professional Design That Builds<br>Your Brand &amp; Gets You Noticed
+        </h2>
+        <p class="section-desc reveal reveal-d2">
+          At Billo Signs, design isn't decoration — it's a business tool. Every sign, print piece, and graphic we create is built to perform in the real world, attract customers, and make your business impossible to ignore. From your first logo to your full storefront, we handle it all in Edmonton and across Alberta.
+        </p>
+
+        <!-- 4 Category Cards -->
+        <div class="services-grid" role="list">
+
+          <article class="service-card reveal" role="listitem">
+            <div class="service-icon-wrap" aria-hidden="true">🖨️</div>
+            <h3>Print Design</h3>
+            <p>Business cards, brochures, flyers, envelopes, letterheads, labels, forms, and full marketing packages — designed sharp and printed right.</p>
+            <a href="#print" class="service-link" aria-label="See all print design services">See all print services →</a>
+          </article>
+
+          <article class="service-card reveal reveal-d1" role="listitem">
+            <div class="service-icon-wrap" aria-hidden="true">🪧</div>
+            <h3>Signage Design &amp; Installation</h3>
+            <p>Your signage is your first impression. We design and install storefront signs, channel letters, lightboxes, and directional signage that demand attention.</p>
+            <a href="#quote" class="service-link" aria-label="Get a quote for signage">Get a quote →</a>
+          </article>
+
+          <article class="service-card reveal reveal-d2" role="listitem">
+            <div class="service-icon-wrap" aria-hidden="true">📐</div>
+            <h3>Large Format Design</h3>
+            <p>Vehicle decals, stickers, window graphics, wall murals, banners, and posters — high-resolution designs that turn surfaces into marketing assets.</p>
+            <a href="#quote" class="service-link" aria-label="Get a quote for large format">Get a quote →</a>
+          </article>
+
+          <article class="service-card reveal reveal-d3" role="listitem">
+            <div class="service-icon-wrap" aria-hidden="true">🔰</div>
+            <h3>Logo &amp; Brand Identity</h3>
+            <p>Your logo is the foundation of everything. We design custom, memorable logos that work across signage, print, and digital — built to last.</p>
+            <a href="#quote" class="service-link" aria-label="Get a quote for logo design">Get a quote →</a>
+          </article>
+
+        </div>
+
+        <!-- Signage type breakdown -->
+        <div class="signage-types reveal" style="margin-top:56px">
+          <h3 class="services-sub-heading">Signage Types We Build &amp; Install</h3>
+          <div class="services-grid services-grid--6" role="list">
+
+            <article class="service-card service-card--sm reveal" role="listitem">
+              <div class="service-icon-wrap" aria-hidden="true">🔆</div>
+              <h3>Channel Letters &amp; LED Signs</h3>
+              <p>Illuminated storefront signs for maximum visibility day and night.</p>
+              <a href="#quote" class="service-link">Get a quote →</a>
+            </article>
+
+            <article class="service-card service-card--sm reveal reveal-d1" role="listitem">
+              <div class="service-icon-wrap" aria-hidden="true">📦</div>
+              <h3>Lightboxes &amp; Storefront Signs</h3>
+              <p>Backlit displays for retail, restaurants, and plazas across Alberta.</p>
+              <a href="#quote" class="service-link">Get a quote →</a>
+            </article>
+
+            <article class="service-card service-card--sm reveal reveal-d2" role="listitem">
+              <div class="service-icon-wrap" aria-hidden="true">🪟</div>
+              <h3>Window Graphics &amp; Frosted Vinyl</h3>
+              <p>Branding, privacy, and promotions on your glass.</p>
+              <a href="#quote" class="service-link">Get a quote →</a>
+            </article>
+
+            <article class="service-card service-card--sm reveal reveal-d3" role="listitem">
+              <div class="service-icon-wrap" aria-hidden="true">🚗</div>
+              <h3>Vehicle Decals &amp; Stickers</h3>
+              <p>Vehicle decals and spot graphics — your brand moving through Edmonton.</p>
+              <a href="#quote" class="service-link">Get a quote →</a>
+            </article>
+
+            <article class="service-card service-card--sm reveal reveal-d4" role="listitem">
+              <div class="service-icon-wrap" aria-hidden="true">📋</div>
+              <h3>Banners, Coroplast &amp; Lawn Signs</h3>
+              <p>Fast-turnaround for openings, events, and promotions.</p>
+              <a href="#quote" class="service-link">Get a quote →</a>
+            </article>
+
+            <article class="service-card service-card--sm reveal reveal-d5" role="listitem">
+              <div class="service-icon-wrap" aria-hidden="true">🏢</div>
+              <h3>Interior Branding &amp; Office Signs</h3>
+              <p>Murals, wayfinding, and feature walls for your space.</p>
+              <a href="#quote" class="service-link">Get a quote →</a>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PRINT & DESIGN SERVICES (EXPANDED)
+    ═══════════════════════════════════════ -->
+    <section class="section section-light" id="print" aria-labelledby="print-heading">
+      <div class="container">
+
+        <span class="section-tag section-tag--dark reveal">Print &amp; Design Services in Edmonton</span>
+        <h2 class="section-heading section-heading--dark reveal reveal-d1" id="print-heading">
+          Everything Your Business Needs — Printed &amp; Designed Right
+        </h2>
+        <p class="section-desc section-desc--dark reveal reveal-d2">
+          From business cards Edmonton businesses trust to large format printing Edmonton brands rely on — we handle design, print, and delivery all in one place. No juggling multiple vendors.
+        </p>
+
+        <!-- Marketing Materials -->
+        <h3 class="print-subheading reveal">📢 Marketing Materials</h3>
+        <div class="print-grid">
+          <article class="print-card reveal">
+            <div class="print-icon">🪪</div>
+            <h4>Business Cards Edmonton</h4>
+            <p>Premium cards that make a strong first impression for Edmonton businesses.</p>
+          </article>
+          <article class="print-card reveal reveal-d1">
+            <div class="print-icon">📄</div>
+            <h4>Flyers &amp; Brochures</h4>
+            <p>Eye-catching print marketing designed for Edmonton businesses of all sizes.</p>
+          </article>
+          <article class="print-card reveal reveal-d2">
+            <div class="print-icon">📮</div>
+            <h4>Postcards &amp; Mailers</h4>
+            <p>Direct mail campaigns and promotional postcards — printed fast.</p>
+          </article>
+          <article class="print-card reveal reveal-d3">
+            <div class="print-icon">📋</div>
+            <h4>Catalogues &amp; Menus</h4>
+            <p>Multi-page print pieces for restaurants, retailers, and service businesses.</p>
+          </article>
+          <article class="print-card reveal">
+            <div class="print-icon">🧲</div>
+            <h4>Magnets, Door Hangers &amp; Tickets</h4>
+            <p>Promotional items designed for attention and built for distribution.</p>
+          </article>
+          <article class="print-card reveal reveal-d1">
+            <div class="print-icon">🎪</div>
+            <h4>Event Tickets &amp; Passes</h4>
+            <p>Custom-designed event tickets and access passes, printed and ready.</p>
+          </article>
+        </div>
+
+        <!-- Stationery -->
+        <h3 class="print-subheading reveal" style="margin-top:var(--sp-7)">📁 Stationery &amp; Office Print</h3>
+        <div class="print-grid">
+          <article class="print-card reveal">
+            <div class="print-icon">✉️</div>
+            <h4>Envelopes &amp; Letterheads</h4>
+            <p>Branded stationery that makes every correspondence look professional.</p>
+          </article>
+          <article class="print-card reveal reveal-d1">
+            <div class="print-icon">📓</div>
+            <h4>Notepads &amp; Bookmarks</h4>
+            <p>Custom notepads and bookmarks — useful branded items clients keep.</p>
+          </article>
+          <article class="print-card reveal reveal-d2">
+            <div class="print-icon">📁</div>
+            <h4>Presentation Folders</h4>
+            <p>Professional folders for proposals, packages, and client presentations.</p>
+          </article>
+          <article class="print-card reveal reveal-d3">
+            <div class="print-icon">📎</div>
+            <h4>Bindings &amp; Lamination</h4>
+            <p>Finishing services for reports, manuals, and decks — professional every time.</p>
+          </article>
+        </div>
+
+        <!-- Forms & Labels -->
+        <h3 class="print-subheading reveal" style="margin-top:var(--sp-7)">🧾 Forms, Labels &amp; Copies</h3>
+        <div class="print-grid">
+          <article class="print-card reveal">
+            <div class="print-icon">📝</div>
+            <h4>Carbonless Forms &amp; Snapsets</h4>
+            <p>Multi-part forms for invoices, work orders, and receipts.</p>
+          </article>
+          <article class="print-card reveal reveal-d1">
+            <div class="print-icon">🏷️</div>
+            <h4>Labels &amp; Cheques</h4>
+            <p>Custom labels for products, packaging, and business cheques.</p>
+          </article>
+          <article class="print-card reveal reveal-d2">
+            <div class="print-icon">🖨️</div>
+            <h4>Colour Copies Edmonton</h4>
+            <p>High-quality colour copies in Edmonton for any volume.</p>
+          </article>
+          <article class="print-card reveal reveal-d3">
+            <div class="print-icon">📐</div>
+            <h4>Engineering Copy</h4>
+            <p>Large-format technical drawings, blueprints, and architectural prints.</p>
+          </article>
+        </div>
+
+        <!-- Promo & Apparel -->
+        <h3 class="print-subheading reveal" style="margin-top:var(--sp-7)">🎁 Promotional Items &amp; Apparel</h3>
+        <div class="print-grid">
+          <article class="print-card reveal">
+            <div class="print-icon">👕</div>
+            <h4>T-Shirts &amp; Hoodies</h4>
+            <p>Custom branded apparel for your team, events, and promotions.</p>
+          </article>
+          <article class="print-card reveal reveal-d1">
+            <div class="print-icon">🛍️</div>
+            <h4>Tote Bags &amp; Mugs</h4>
+            <p>Everyday promotional items your customers will actually use.</p>
+          </article>
+          <article class="print-card reveal reveal-d2">
+            <div class="print-icon">🖊️</div>
+            <h4>Pens &amp; Buttons</h4>
+            <p>Affordable branded items for events, trade shows, and giveaways.</p>
+          </article>
+          <article class="print-card reveal reveal-d3">
+            <div class="print-icon">🎨</div>
+            <h4>Graphic Design Edmonton</h4>
+            <p>Logos, layouts, and brand materials — built for real-world use across print and signage.</p>
+          </article>
+        </div>
+
+        <!-- Large Format -->
+        <h3 class="print-subheading reveal" style="margin-top:var(--sp-7)">🖼️ Large Format Printing Edmonton</h3>
+        <div class="print-grid">
+          <article class="print-card reveal">
+            <div class="print-icon">🎌</div>
+            <h4>Banners &amp; Posters</h4>
+            <p>Large-scale print for events, storefronts, and outdoor advertising.</p>
+          </article>
+          <article class="print-card reveal reveal-d1">
+            <div class="print-icon">🖼️</div>
+            <h4>Canvas Prints &amp; Wall Graphics</h4>
+            <p>High-impact interior visuals for offices, lobbies, and retail spaces.</p>
+          </article>
+          <article class="print-card reveal reveal-d2">
+            <div class="print-icon">🚗</div>
+            <h4>Vehicle Graphics &amp; Window Decals</h4>
+            <p>Vehicle decals, stickers, and spot graphics for fleet branding across Alberta.</p>
+          </article>
+          <article class="print-card reveal reveal-d3">
+            <div class="print-icon">🪧</div>
+            <h4>Yard Signs &amp; Sandwich Boards</h4>
+            <p>Portable signage for openings, events, and outdoor promotions.</p>
+          </article>
+        </div>
+
+        <!-- Design & Digital -->
+        <h3 class="print-subheading reveal" style="margin-top:var(--sp-7)">💻 Design &amp; Digital Services</h3>
+        <div class="print-grid print-grid--3">
+          <article class="print-card reveal">
+            <div class="print-icon">🎨</div>
+            <h4>Graphic Design Edmonton</h4>
+            <p>Logos, brand identity, and print-ready artwork built for Edmonton businesses.</p>
+          </article>
+          <article class="print-card reveal reveal-d1">
+            <div class="print-icon">💻</div>
+            <h4>Website Design</h4>
+            <p>Clean, conversion-focused websites for local businesses ready to grow online.</p>
+          </article>
+          <article class="print-card reveal reveal-d2">
+            <div class="print-icon">📣</div>
+            <h4>Online Marketing Services</h4>
+            <p>Social media management, ads, and digital presence for Alberta businesses.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         HOW IT WORKS
+    ═══════════════════════════════════════ -->
+    <section class="section section-dark" id="process" aria-labelledby="process-heading">
+      <div class="container">
+        <span class="section-tag reveal">How Our Edmonton Sign Installation Process Works</span>
+        <h2 class="section-heading reveal reveal-d1" id="process-heading">
+          Three steps. Zero confusion.
+        </h2>
+        <p class="section-desc reveal reveal-d2">
+          You'll know exactly what's happening — from first message to final Edmonton sign installation.
+        </p>
+        <ol class="process-grid" aria-label="Our 3-step process">
+
+          <li class="process-step reveal">
+            <span class="proc-num" aria-hidden="true">01</span>
+            <span class="proc-badge">Request</span>
+            <h3>Tell Us What You Need</h3>
+            <p>Call, WhatsApp, or fill the form. Even rough ideas are fine. We respond within 24 hours with clear, itemized pricing — no vague estimates.</p>
+          </li>
+
+          <li class="process-step reveal reveal-d2">
+            <span class="proc-num" aria-hidden="true">02</span>
+            <span class="proc-badge">Design</span>
+            <h3>Approve the Design First</h3>
+            <p>We create a full design mockup. You see exactly how your sign or print will look before we produce anything. No surprises, no hidden costs.</p>
+          </li>
+
+          <li class="process-step reveal reveal-d4">
+            <span class="proc-num" aria-hidden="true">03</span>
+            <span class="proc-badge">Deliver</span>
+            <h3>We Build &amp; Install On Time</h3>
+            <p>We handle production and on-site Edmonton sign installation — on schedule, on budget, and finished exactly as approved. Every time.</p>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PORTFOLIO
+    ═══════════════════════════════════════ -->
+    <section class="section" id="portfolio" aria-labelledby="portfolio-heading">
+      <div class="container">
+        <div class="portfolio-header">
           <div>
-            <h2>Need a sign or print quote?</h2>
-            <p>Send the project details on WhatsApp or use the quick quote section below.</p>
+            <span class="section-tag reveal">Our Work</span>
+            <h2 class="section-heading reveal reveal-d1" id="portfolio-heading">Real Projects. Real Businesses.</h2>
+            <p class="section-desc reveal reveal-d2">Every sign in our portfolio is installed and standing somewhere in Alberta right now.</p>
           </div>
-          <div class="cta-actions">
-            <a class="btn btn-whatsapp" href="https://wa.me/13439895043">WhatsApp Us</a>
-            <a class="btn btn-light" href="tel:+13439895043">Call Now</a>
+          <a href="#quote" class="btn btn-ghost reveal reveal-d3">Start Your Project →</a>
+        </div>
+        <div class="portfolio-grid" role="list">
+
+          <figure class="port-item port-item--featured reveal" role="listitem">
+            <div class="port-ph">
+              <img src="images/portfolio/placeholder-1.jpg"
+                   alt="Custom Channel Letter Sign for Restaurant in Edmonton, AB"
+                   loading="lazy" width="800" height="450">
+              <div class="port-ph-placeholder" aria-hidden="true">
+                <span class="port-ph-icon">🖼</span>
+                <span class="port-ph-label">Featured Project — Replace with real photo</span>
+              </div>
+            </div>
+            <div class="port-overlay">
+              <figcaption class="port-meta">
+                <span class="port-tag">Channel Letters · Edmonton</span>
+                <span class="port-title">Custom LED Channel Letter Sign for Restaurant</span>
+              </figcaption>
+            </div>
+          </figure>
+
+          <figure class="port-item reveal reveal-d1" role="listitem">
+            <div class="port-ph">
+              <img src="images/portfolio/placeholder-2.jpg"
+                   alt="Vehicle Wrap by Sign Shop Edmonton — Billo Signs"
+                   loading="lazy" width="560" height="420">
+              <div class="port-ph-placeholder" aria-hidden="true">
+                <span class="port-ph-icon">🖼</span>
+                <span class="port-ph-label">Add Your Photo</span>
+              </div>
+            </div>
+            <div class="port-overlay">
+              <figcaption class="port-meta">
+                <span class="port-tag">Vehicle Wrap · St. Albert</span>
+                <span class="port-title">Full Vehicle Wrap — Trade Services Company</span>
+              </figcaption>
+            </div>
+          </figure>
+
+          <figure class="port-item reveal reveal-d2" role="listitem">
+            <div class="port-ph">
+              <img src="images/portfolio/placeholder-3.jpg"
+                   alt="Window Graphics Installation St. Albert Alberta"
+                   loading="lazy" width="400" height="400">
+              <div class="port-ph-placeholder" aria-hidden="true">
+                <span class="port-ph-icon">🖼</span>
+                <span class="port-ph-label">Add Your Photo</span>
+              </div>
+            </div>
+            <div class="port-overlay">
+              <figcaption class="port-meta">
+                <span class="port-tag">Window Graphics · St. Albert</span>
+                <span class="port-title">Frosted Vinyl for Salon Storefront</span>
+              </figcaption>
+            </div>
+          </figure>
+
+          <figure class="port-item reveal reveal-d3" role="listitem">
+            <div class="port-ph">
+              <img src="images/portfolio/placeholder-4.jpg"
+                   alt="LED Storefront Sign Edmonton Business"
+                   loading="lazy" width="400" height="400">
+              <div class="port-ph-placeholder" aria-hidden="true">
+                <span class="port-ph-icon">🖼</span>
+                <span class="port-ph-label">Add Your Photo</span>
+              </div>
+            </div>
+            <div class="port-overlay">
+              <figcaption class="port-meta">
+                <span class="port-tag">LED Lightbox · Plaza Edmonton</span>
+                <span class="port-title">Lightbox Sign — Plaza Retail Tenant</span>
+              </figcaption>
+            </div>
+          </figure>
+
+          <figure class="port-item reveal reveal-d4" role="listitem">
+            <div class="port-ph">
+              <img src="images/portfolio/placeholder-5.jpg"
+                   alt="Interior Branding Office Signs Edmonton Alberta"
+                   loading="lazy" width="400" height="400">
+              <div class="port-ph-placeholder" aria-hidden="true">
+                <span class="port-ph-icon">🖼</span>
+                <span class="port-ph-label">Add Your Photo</span>
+              </div>
+            </div>
+            <div class="port-overlay">
+              <figcaption class="port-meta">
+                <span class="port-tag">Interior · Edmonton Office</span>
+                <span class="port-title">Interior Branding &amp; Lobby Signs</span>
+              </figcaption>
+            </div>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         TESTIMONIALS
+    ═══════════════════════════════════════ -->
+    <section class="section section-dark" id="reviews" aria-labelledby="reviews-heading">
+      <div class="container">
+        <span class="section-tag reveal">Client Reviews</span>
+        <h2 class="section-heading reveal reveal-d1" id="reviews-heading">
+          What Edmonton Businesses Say
+        </h2>
+        <p class="section-desc reveal reveal-d2">
+          Real feedback from real clients — restaurants, franchises, and local shops across Alberta.
+        </p>
+        <div class="testi-grid">
+
+          <!-- Featured -->
+          <article class="testi-card testi-card--featured reveal" aria-label="Featured testimonial">
+            <blockquote class="testi-quote-mark" aria-hidden="true">"</blockquote>
+            <div class="testi-content">
+              <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+              <blockquote class="testi-body">
+                We were opening our second location in Edmonton and our previous sign company completely delayed us — three days before opening, nothing was installed. Billo Signs stepped in, gave us a clear timeline, and actually delivered when they said. Storefront sign and window graphics were done before opening day. We opened on time and had customers walking in from day one because the place actually looked ready.
+              </blockquote>
+              <footer class="testi-footer">
+                <div class="testi-avatar" aria-hidden="true">🍽</div>
+                <div>
+                  <cite class="testi-name">Restaurant Owner — Edmonton</cite>
+                  <span class="testi-role">Second Location Opening</span>
+                </div>
+              </footer>
+            </div>
+          </article>
+
+          <article class="testi-card reveal reveal-d1" aria-label="Testimonial from plaza tenant">
+            <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testi-body">
+              As a first-time business owner, I had no idea how signage worked. The last designer gave me files that couldn't even be printed. Billo Signs handled everything — design, sizing, materials, install. Clean, professional signage that made my store look legit from day one.
+            </blockquote>
+            <footer class="testi-footer">
+              <div class="testi-avatar" aria-hidden="true">🏪</div>
+              <div>
+                <cite class="testi-name">Plaza Tenant — Edmonton</cite>
+                <span class="testi-role">First-Time Business Owner</span>
+              </div>
+            </footer>
+          </article>
+
+          <article class="testi-card reveal reveal-d2" aria-label="Testimonial from franchise operator">
+            <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testi-body">
+              We've used multiple sign companies and the biggest issue was inconsistency — different colours and finishes across locations. With Billo Signs, everything was standardized. Same look, same quality. It finally feels like one brand.
+            </blockquote>
+            <footer class="testi-footer">
+              <div class="testi-avatar" aria-hidden="true">🔑</div>
+              <div>
+                <cite class="testi-name">Franchise Operator — Alberta</cite>
+                <span class="testi-role">Multi-Location Brand</span>
+              </div>
+            </footer>
+          </article>
+
+          <article class="testi-card reveal reveal-d3" aria-label="Testimonial from salon owner">
+            <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testi-body">
+              My biggest frustration before was chasing vendors for updates. Billo Signs was the complete opposite — quick responses, clear updates, no confusion. Just the communication alone made the whole experience stress-free.
+            </blockquote>
+            <footer class="testi-footer">
+              <div class="testi-avatar" aria-hidden="true">💇</div>
+              <div>
+                <cite class="testi-name">Salon Owner — St. Albert</cite>
+                <span class="testi-role">Storefront Rebrand</span>
+              </div>
+            </footer>
+          </article>
+
+          <article class="testi-card reveal reveal-d4" aria-label="Testimonial from bar owner">
+            <div class="testi-stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testi-body">
+              We wanted something that stands out at night, not just a basic sign. Most companies gave us standard options. Billo Signs designed a custom illuminated sign that fits our vibe. We've had people walk in just because they noticed it from outside.
+            </blockquote>
+            <footer class="testi-footer">
+              <div class="testi-avatar" aria-hidden="true">🍸</div>
+              <div>
+                <cite class="testi-name">Bar &amp; Lounge Owner — Edmonton</cite>
+                <span class="testi-role">Custom LED Sign Install</span>
+              </div>
+            </footer>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SERVICE AREAS
+    ═══════════════════════════════════════ -->
+    <section class="section section-dark" id="areas" aria-labelledby="areas-heading">
+      <div class="container">
+        <span class="section-tag reveal">Where We Serve</span>
+        <h2 class="section-heading reveal reveal-d1" id="areas-heading">
+          Your Local Sign Company in Edmonton &amp; Across Alberta
+        </h2>
+        <p class="section-desc reveal reveal-d2">
+          Whether you need a single storefront sign or signage across multiple Alberta locations, Billo Signs delivers wherever your business grows.
+        </p>
+        <ul class="cities-grid reveal" aria-label="Cities we serve">
+          <li class="city-pill">
+            <span class="city-name">Edmonton</span>
+            <span class="city-sub">Primary Market</span>
+          </li>
+          <li class="city-pill">
+            <span class="city-name">St. Albert</span>
+            <span class="city-sub">Local Delivery</span>
+          </li>
+          <li class="city-pill">
+            <span class="city-name">Sherwood Park</span>
+            <span class="city-sub">Local Delivery</span>
+          </li>
+          <li class="city-pill">
+            <span class="city-name">Spruce Grove</span>
+            <span class="city-sub">Local Delivery</span>
+          </li>
+          <li class="city-pill">
+            <span class="city-name">Leduc</span>
+            <span class="city-sub">Local Delivery</span>
+          </li>
+          <li class="city-pill">
+            <span class="city-name">Red Deer</span>
+            <span class="city-sub">Alberta Reach</span>
+          </li>
+          <li class="city-pill">
+            <span class="city-name">Hinton</span>
+            <span class="city-sub">Alberta Reach</span>
+          </li>
+          <li class="city-pill">
+            <span class="city-name">Edson</span>
+            <span class="city-sub">Alberta Reach</span>
+          </li>
+          <li class="city-pill">
+            <span class="city-name">Jasper</span>
+            <span class="city-sub">Alberta Reach</span>
+          </li>
+          <li class="city-pill">
+            <span class="city-name">Fort McMurray</span>
+            <span class="city-sub">Alberta Reach</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         USE CASES STRIP
+    ═══════════════════════════════════════ -->
+    <section class="section section-dark use-cases-section" aria-labelledby="usecases-heading">
+      <div class="container">
+        <span class="section-tag reveal">Who We Help</span>
+        <h2 class="section-heading reveal reveal-d1" id="usecases-heading">
+          Whatever Stage You're At —<br>We've Got You Covered
+        </h2>
+        <p class="section-desc reveal reveal-d2">
+          Whether you're days away from opening or rebuilding an existing brand, Billo Signs has handled it before. Here's how we help businesses like yours.
+        </p>
+        <div class="use-cases-grid">
+
+          <article class="use-case-card reveal">
+            <div class="uc-icon" aria-hidden="true">🏪</div>
+            <div class="uc-badge">New Opening</div>
+            <h3>Opening a New Location</h3>
+            <p>You have a launch date and need everything ready — storefront sign, window graphics, interior branding, business cards, and banners. We coordinate all of it so nothing is missing on day one.</p>
+            <a href="#quote" class="uc-cta">Get opening-day ready →</a>
+          </article>
+
+          <article class="use-case-card reveal reveal-d2">
+            <div class="uc-icon" aria-hidden="true">🔄</div>
+            <div class="uc-badge">Rebrand</div>
+            <h3>Rebranding Your Business</h3>
+            <p>New name, new look, or upgrading tired signage — we handle the full transition. New logo, updated storefront, reprinted materials, and consistent branding across every touchpoint.</p>
+            <a href="#quote" class="uc-cta">Start your rebrand →</a>
+          </article>
+
+          <article class="use-case-card reveal reveal-d4">
+            <div class="uc-icon" aria-hidden="true">📍</div>
+            <div class="uc-badge">Multi-Location</div>
+            <h3>Expanding Across Alberta</h3>
+            <p>Franchise operators and multi-location brands trust us to keep signage consistent across every site. Same quality, same look, whether you're in Edmonton, Red Deer, or Fort McMurray.</p>
+            <a href="#quote" class="uc-cta">Talk to us about scaling →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         QUOTE FUNNEL + FORM
+    ═══════════════════════════════════════ -->
+    <section class="section" id="quote" aria-labelledby="quote-heading">
+      <div class="container">
+        <div class="quote-grid">
+
+          <!-- Left: Promises -->
+          <div class="quote-left">
+            <span class="section-tag reveal">Get Started</span>
+            <h2 class="section-heading reveal reveal-d1" id="quote-heading">
+              Get Signage Done Right —<br>The First Time
+            </h2>
+            <p class="quote-sub reveal reveal-d2">No delays. No confusion. No stress.</p>
+            <ul class="quote-promises reveal reveal-d3" aria-label="Our guarantees">
+              <li class="promise-item">
+                <span class="p-check" aria-hidden="true">✓</span>
+                Free quote back within 24 hours
+              </li>
+              <li class="promise-item">
+                <span class="p-check" aria-hidden="true">✓</span>
+                Design mockup before production begins
+              </li>
+              <li class="promise-item">
+                <span class="p-check" aria-hidden="true">✓</span>
+                Clear pricing — no hidden costs
+              </li>
+              <li class="promise-item">
+                <span class="p-check" aria-hidden="true">✓</span>
+                One team from design to final install
+              </li>
+            </ul>
+            <a href="tel:+15485773748" class="btn btn-ghost reveal reveal-d4" aria-label="Call Billo Signs directly">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              Or call us directly
+            </a>
+          </div>
+
+          <!-- Right: Funnel + Form -->
+          <div class="funnel-box reveal reveal-d3">
+
+            <!-- Progress bar -->
+            <div class="funnel-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33" aria-label="Quote form progress">
+              <div class="funnel-progress-bar" id="funnelProgressBar" style="width:33%"></div>
+            </div>
+
+            <!-- Header -->
+            <div class="funnel-head">
+              <h3 id="funnelTitle">What do you need?</h3>
+              <span class="funnel-step-label" id="funnelStepLabel">Step 1 of 3</span>
+            </div>
+
+            <!-- Body -->
+            <div class="funnel-body">
+
+              <!-- Step 1: Service — visible by default, no CSS class needed -->
+              <div class="funnel-step" id="fStep1" data-step="1">
+                <p class="funnel-hint">Pick the one that fits best — we handle all of them.</p>
+                <div class="funnel-options" id="serviceOptions" role="group" aria-label="Select a service">
+                  <button class="funnel-opt" type="button" data-value="Channel Letters / LED Signs">
+                    <span class="fopt-icon" aria-hidden="true">🔆</span>
+                    Channel Letters / LED Signs
+                  </button>
+                  <button class="funnel-opt" type="button" data-value="Window Graphics / Frosted Vinyl">
+                    <span class="fopt-icon" aria-hidden="true">🪟</span>
+                    Window Graphics / Frosted Vinyl
+                  </button>
+                  <button class="funnel-opt" type="button" data-value="Vehicle Decals/Stickers">
+                    <span class="fopt-icon" aria-hidden="true">🚗</span>
+                    Vehicle Decals/Stickers
+                  </button>
+                  <button class="funnel-opt" type="button" data-value="Lightboxes / Storefront Signs">
+                    <span class="fopt-icon" aria-hidden="true">📦</span>
+                    Lightboxes / Storefront Signs
+                  </button>
+                  <button class="funnel-opt" type="button" data-value="Print Services (Cards, Flyers, etc.)">
+                    <span class="fopt-icon" aria-hidden="true">🖨️</span>
+                    Print Services (Cards, Flyers, etc.)
+                  </button>
+                  <button class="funnel-opt" type="button" data-value="Not sure yet — need advice">
+                    <span class="fopt-icon" aria-hidden="true">💬</span>
+                    Not sure yet — need advice
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 2: Budget — hidden by inline style, JS controls all transitions -->
+              <div class="funnel-step" id="fStep2" data-step="2" style="display:none">
+                <p class="funnel-hint">Helps us recommend the right solution straight away.</p>
+                <div class="funnel-options" id="budgetOptions" role="group" aria-label="Select a budget range">
+                  <button class="funnel-opt" type="button" data-value="Under $500">
+                    <span class="fopt-icon" aria-hidden="true">💰</span>
+                    Under $500
+                  </button>
+                  <button class="funnel-opt" type="button" data-value="$500 – $2,000">
+                    <span class="fopt-icon" aria-hidden="true">💰</span>
+                    $500 – $2,000
+                  </button>
+                  <button class="funnel-opt" type="button" data-value="$2,000 – $5,000">
+                    <span class="fopt-icon" aria-hidden="true">💰</span>
+                    $2,000 – $5,000
+                  </button>
+                  <button class="funnel-opt" type="button" data-value="$5,000+">
+                    <span class="fopt-icon" aria-hidden="true">💰</span>
+                    $5,000+
+                  </button>
+                  <button class="funnel-opt" type="button" data-value="Not sure — need a ballpark">
+                    <span class="fopt-icon" aria-hidden="true">🤷</span>
+                    Not sure — need a ballpark
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 3: Contact Form — hidden by inline style, JS controls all transitions -->
+              <div class="funnel-step" id="fStep3" data-step="3" style="display:none">
+                <div class="funnel-summary" id="funnelSummary" aria-live="polite"></div>
+                <form
+                  id="quoteForm"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  novalidate
+                  aria-label="Quote request form"
+                >
+                  <!-- Web3Forms hidden fields -->
+                  <input type="hidden" name="access_key" value="b589035e-a7b7-4014-a877-4188f1656184">
+                  <input type="hidden" name="subject" value="New Quote Request — Billo Signs">
+                  <input type="hidden" name="from_name" value="Billo Signs Website">
+                  <input type="hidden" name="redirect" value="false">
+                  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true">
+                  <!-- Dynamic fields populated by JS -->
+                  <input type="hidden" name="service_type" id="hiddenService">
+                  <input type="hidden" name="budget_range" id="hiddenBudget">
+
+                  <div class="form-fields">
+                    <div class="form-group">
+                      <label for="fieldName">Your Name <span aria-hidden="true">*</span></label>
+                      <input
+                        type="text"
+                        id="fieldName"
+                        name="name"
+                        placeholder="First & Last Name"
+                        required
+                        autocomplete="name"
+                        aria-required="true"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label for="fieldPhone">Phone Number <span aria-hidden="true">*</span></label>
+                      <input
+                        type="tel"
+                        id="fieldPhone"
+                        name="phone"
+                        placeholder="+1 (548) 577-3748"
+                        required
+                        autocomplete="tel"
+                        aria-required="true"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label for="fieldEmail">Email Address</label>
+                      <input
+                        type="email"
+                        id="fieldEmail"
+                        name="email"
+                        placeholder="you@company.com"
+                        autocomplete="email"
+                      >
+                    </div>
+                    <div class="form-group form-group--full">
+                      <label for="fieldMessage">Tell us more about your project</label>
+                      <textarea
+                        id="fieldMessage"
+                        name="message"
+                        rows="3"
+                        placeholder="Location, size, timeline, any details that help..."
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn-submit" id="formSubmitBtn">
+                    Send My Free Quote Request →
+                  </button>
+
+                  <!-- Form status messages -->
+                  <p class="form-status form-status--success" id="formSuccess" hidden role="alert">
+                    ✅ Your quote request was sent! We'll get back to you within 24 hours.
+                  </p>
+                  <p class="form-status form-status--error" id="formError" hidden role="alert">
+                    Something went wrong. Please try WhatsApp below or call us directly.
+                  </p>
+
+                </form>
+
+                <div class="or-divider"><span>or get an instant reply</span></div>
+                <a href="#" class="btn-wa-full" id="funnelWhatsApp" target="_blank" rel="noopener" aria-label="Send quote via WhatsApp">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Send via WhatsApp Instead
+                </a>
+              </div>
+
+            </div><!-- /funnel-body -->
+          </div><!-- /funnel-box -->
+
+        </div><!-- /quote-grid -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FAQ
+    ═══════════════════════════════════════ -->
+    <section class="section section-dark" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="faq-grid">
+          <div class="faq-intro">
+            <span class="section-tag reveal">Common Questions</span>
+            <h2 class="section-heading reveal reveal-d1" id="faq-heading">Frequently Asked Questions</h2>
+            <p class="section-desc reveal reveal-d2">
+              Everything you need to know about custom signage and print in Edmonton.
+            </p>
+            <a href="#quote" class="btn btn-gold reveal reveal-d3">Get a Free Quote →</a>
+          </div>
+          <div class="faq-list reveal reveal-d2">
+
+            <div class="faq-item">
+              <button class="faq-btn" type="button" aria-expanded="false" aria-controls="faq-answer-1">
+                How much does signage cost in Edmonton?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-1" hidden>
+                Most signage projects range from a few hundred to several thousand dollars depending on size, materials, and type. Billo Signs provides clear, itemized quotes within 24 hours — no vague estimates, no surprises.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" type="button" aria-expanded="false" aria-controls="faq-answer-2">
+                How long does it take to make a custom sign?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-2" hidden>
+                Most projects take 3–10 business days depending on complexity. We provide a clear timeline upfront and stick to it. Rush timelines are often available — just ask when you reach out.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" type="button" aria-expanded="false" aria-controls="faq-answer-3">
+                Do you handle design, production, and installation?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-3" hidden>
+                Yes — Billo Signs handles the entire process in-house. Design, production, and Edmonton sign installation all managed by one team. One point of contact throughout. No handoffs, no finger-pointing.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" type="button" aria-expanded="false" aria-controls="faq-answer-4">
+                What types of businesses do you work with?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-4" hidden>
+                We work with restaurants, retail stores, salons, barbershops, franchises, offices, hotels, plazas, and commercial property owners across Edmonton and Alberta — from single storefronts to multi-location brands.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" type="button" aria-expanded="false" aria-controls="faq-answer-5">
+                Do you install signage outside Edmonton?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-5" hidden>
+                Yes — we serve St. Albert, Sherwood Park, Spruce Grove, Leduc, Red Deer, Hinton, Edson, Jasper, and Fort McMurray. We handle logistics for projects anywhere across Alberta.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-btn" type="button" aria-expanded="false" aria-controls="faq-answer-6">
+                Do you offer print services like business cards and flyers?
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-6" hidden>
+                Yes — beyond signage, Billo Signs offers full print services: business cards, postcards, flyers, brochures, labels, colour copies, engineering copy, bindings, lamination, and more.
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section section-alt">
-      <div class="container contact-grid">
-        <div>
-          <div class="section-head">
-            <h2>Contact</h2>
-            <p>Reach out for signs, decals, banners, vehicle graphics, window lettering or print projects.</p>
-          </div>
-
-          <div class="grid">
-            <div class="contact-line">
-              <span>Phone</span>
-              <a href="tel:+13439895043">+1-343-989-5043</a>
-            </div>
-            
-            <div class="contact-line">
-              <span>Email</span>
-              <a href="mailto:info@hbss.ca">info@hbss.ca</a>
-            </div>
-            <div class="contact-line">
-              <span>Service Area</span>
-              <strong>St. Albert, Edmonton & nearby areas</strong>
-            </div>
-          </div>
-        </div>
-
-        <form class="quote-box" action="mailto:info@hbss.ca" method="post" enctype="text/plain">
-          <h3>Quick Quote Request</h3>
-          <input type="text" name="name" placeholder="Your name" required />
-          <input type="tel" name="phone" placeholder="Phone number" />
-          <input type="email" name="email" placeholder="Email address" />
-          <select name="service">
-            <option value="">Select service</option>
-            <option>Storefront Sign</option>
-            <option>Banner / Poster</option>
-            <option>Window Decal</option>
-            <option>Vehicle Graphic</option>
-            <option>Channel Letters</option>
-            <option>Print Service</option>
-            <option>Other</option>
-          </select>
-          <textarea name="message" placeholder="Tell us what you need, size, quantity, timeline, or attach files by email after submitting."></textarea>
-          <button class="btn btn-primary" type="submit">Submit Request</button>
-        </form>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>HB Sign Shop</strong>
-        <p>Custom signs, print and graphics for local businesses.</p>
+  <!-- ═══════════════════════════════════════
+       AREAS BAR
+  ═══════════════════════════════════════ -->
+  <div class="areas-bar" role="complementary" aria-label="Service areas">
+    <div class="container areas-inner">
+      <span class="areas-label">Serving</span>
+      <span class="areas-divider" aria-hidden="true"></span>
+      <p class="areas-cities">
+        Edmonton &nbsp;·&nbsp; St. Albert &nbsp;·&nbsp; Sherwood Park &nbsp;·&nbsp;
+        Spruce Grove &nbsp;·&nbsp; Leduc &nbsp;·&nbsp; Red Deer &nbsp;·&nbsp;
+        Hinton &nbsp;·&nbsp; Edson &nbsp;·&nbsp; Jasper &nbsp;·&nbsp; Fort McMurray
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo" aria-label="Site Footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="#" class="footer-logo-link" aria-label="Billo Signs Home">
+            <span class="footer-logo-text">BILLO<span class="footer-logo-dot">.</span>SIGNS</span>
+          </a>
+          <p class="footer-desc">
+            Your local sign company in Edmonton, Alberta. Fast, clear, reliable signage and print for growing businesses across Alberta — delivered right the first time.
+          </p>
+          <a href="https://wa.me/15485773748" class="footer-wa" target="_blank" rel="noopener" aria-label="WhatsApp Billo Signs">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Us
+          </a>
+        </div>
+
+        <!-- Signage -->
+        <nav class="footer-col" aria-label="Signage services">
+          <h4>Signage Services</h4>
+          <ul>
+            <li><a href="#signage">Channel Letters &amp; LED Signs</a></li>
+            <li><a href="#signage">Lightboxes &amp; Storefront Signs</a></li>
+            <li><a href="#signage">Window Graphics</a></li>
+            <li><a href="#signage">Vehicle Decals/Stickers</a></li>
+            <li><a href="#signage">Banners &amp; Lawn Signs</a></li>
+            <li><a href="#signage">Interior Branding</a></li>
+          </ul>
+        </nav>
+
+        <!-- Print -->
+        <nav class="footer-col" aria-label="Print and design services">
+          <h4>Print &amp; Design</h4>
+          <ul>
+            <li><a href="#print">Business Cards Edmonton</a></li>
+            <li><a href="#print">Flyers &amp; Brochures</a></li>
+            <li><a href="#print">Graphic Design Edmonton</a></li>
+            <li><a href="#print">Colour Copies Edmonton</a></li>
+            <li><a href="#print">Large Format Printing Edmonton</a></li>
+            <li><a href="#print">Website Design</a></li>
+          </ul>
+        </nav>
+
+        <!-- Areas -->
+        <nav class="footer-col" aria-label="Service areas">
+          <h4>Service Areas</h4>
+          <ul>
+            <li><a href="#areas">Sign Shop Edmonton</a></li>
+            <li><a href="#areas">Signage St. Albert</a></li>
+            <li><a href="#areas">Sign Company Red Deer</a></li>
+            <li><a href="#areas">Signage Fort McMurray</a></li>
+            <li><a href="#areas">Signage Hinton &amp; Edson</a></li>
+            <li><a href="#areas">Signage Jasper Alberta</a></li>
+          </ul>
+        </nav>
+
       </div>
-      <p>© 2026 HB Sign Shop. All rights reserved.</p>
+
+      <div class="footer-bottom">
+        <p class="footer-legal">
+          © 2025 Billo Signs &amp; Graphics — Sign Company Edmonton, Alberta. All rights reserved.
+        </p>
+        <div class="footer-links">
+          <a href="https://billosigns.ca">billosigns.ca</a>
+          <a href="mailto:hello@billosigns.ca">hello@billosigns.ca</a>
+        </div>
+      </div>
+
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/13439895043" class="floating-whatsapp" aria-label="Chat on WhatsApp">
-    WhatsApp
-  </a>
-
-  <style>
-    .floating-whatsapp{
-      position:fixed;
-      right:18px;
-      bottom:90px;
-      z-index:1300;
-      background:#19a463;
-      color:#fff;
-      text-decoration:none;
-      padding:12px 16px;
-      border-radius:999px;
-      font-weight:800;
-      font-size:14px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.15);
-    }
-
-    .floating-whatsapp:hover{
-      background:#148a52;
-    }
-
-    @media (min-width:768px){
-      .floating-whatsapp{
-        bottom:24px;
-      }
-    }
-  </style>
-
-  <div class="sticky-mobile-cta" aria-label="Mobile contact actions">
-    <a href="tel:+13439895043">Call</a>
-    <a href="https://wa.me/13439895043">WhatsApp</a>
-    <a href="#contact">Quote</a>
+  <!-- ═══════════════════════════════════════
+       MOBILE STICKY BAR
+  ═══════════════════════════════════════ -->
+  <div class="sticky-bar" id="stickyBar" role="navigation" aria-label="Quick contact">
+    <a href="tel:+15485773748" class="sticky-btn sticky-btn--call" aria-label="Call Billo Signs">
+      <svg class="sticky-ico" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      <span>Call</span>
+    </a>
+    <a href="https://wa.me/15485773748" class="sticky-btn sticky-btn--wa" target="_blank" rel="noopener" aria-label="WhatsApp Billo Signs">
+      <svg class="sticky-ico" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="#quote" class="sticky-btn sticky-btn--quote" aria-label="Get a quote">
+      <svg class="sticky-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <span>Get Quote</span>
+    </a>
   </div>
 
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileLinks = mobileMenu.querySelectorAll('a');
+  <!-- JavaScript -->
+  <script src="js/script.js?v=5.3" defer></script>
 
-    hamburger.addEventListener('click', function () {
-      const isOpen = mobileMenu.classList.toggle('active');
-      hamburger.classList.toggle('active', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-
-    mobileLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobileMenu.classList.remove('active');
-        hamburger.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
-    });
-  </script>
 </body>
 </html>
