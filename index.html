@@ -95,13 +95,14 @@
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--dark);
+      width: 120px;
+      height: 58px;
+      border-radius: 0;
+      background: transparent;
       color: var(--white);
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
       font-weight: 800;
       letter-spacing: -0.8px;
     }
@@ -144,6 +145,10 @@
       display: none;
       align-items: center;
       gap: 10px;
+    }
+
+    .header-actions .btn {
+      min-width: 130px;
     }
 
     .hamburger {
@@ -838,6 +843,42 @@
       z-index: 1;
     }
 
+    .brand-marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+      padding: 20px 0;
+    }
+
+    .brand-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: brandScroll 32s linear infinite;
+    }
+
+    .brand-track span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      min-height: 72px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--off-white);
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.3px;
+    }
+
+    @keyframes brandScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
     /* Bento preview gallery */
     .bento-preview {
       padding: 38px 0 72px;
@@ -1091,14 +1132,14 @@
       <div class="nav-wrap">
         <a href="#home" class="brand" aria-label="HB Sign Shop Home">
           <div class="brand-mark" style="background:none;">
-            <img src="images/logo.svg" alt="HB Sign Shop Logo" style="height:42px; width:auto;">
+            <img src="images/logo.svg" alt="HB Sign Shop Logo" style="height:56px; width:auto; max-width:120px; object-fit:contain;">
           </div>
         </a>
 
         <nav class="desktop-nav" aria-label="Main navigation">
           <a href="#services">Services</a>
           <a href="#about">About</a>
-          <a href="#portfolio">Portfolio</a>
+          <a href="#brands">Brands</a>
           <a href="#process">Process</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -1118,7 +1159,7 @@
       <div class="container">
         <a href="#services">Services</a>
         <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
+        <a href="#brands">Brands</a>
         <a href="#process">Process</a>
         <a href="#contact">Contact</a>
         <div class="mobile-menu-actions">
@@ -1239,65 +1280,18 @@
       </div>
     </section>
 
-    <section id="portfolio" class="section">
+    <section id="brands" class="section">
       <div class="container">
         <div class="section-head">
-          <h2>Portfolio gallery</h2>
-          <p>A simple rolling gallery for sign, print and graphics examples. Replace these images with your real project photos whenever ready.</p>
+          <h2>Brands We Work With</h2>
+          <p>A simple scrolling brand strip placeholder. These names can later be replaced with actual client logos.</p>
         </div>
       </div>
 
-      <div class="portfolio-strip" aria-label="Infinite scrolling portfolio gallery">
-        <div class="portfolio-track">
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=70" alt="Office signage example" />
-            <div><strong>Office Signage</strong><span>Indoor branding</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=70" alt="Exterior commercial sign example" />
-            <div><strong>Exterior Signs</strong><span>Business fronts</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=70" alt="Print shop service example" />
-            <div><strong>Printed Materials</strong><span>Business print</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=70" alt="Window graphics example" />
-            <div><strong>Window Graphics</strong><span>Decals and lettering</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=900&q=70" alt="Custom display sign example" />
-            <div><strong>Custom Graphics</strong><span>Signs and displays</span></div>
-          </article>
-          <article class="project-card">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=70" alt="Commercial branding example" />
-            <div><strong>Commercial Branding</strong><span>Clean professional look</span></div>
-          </article>
-
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Office Signage</strong><span>Indoor branding</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Exterior Signs</strong><span>Business fronts</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Printed Materials</strong><span>Business print</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Window Graphics</strong><span>Decals and lettering</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Custom Graphics</strong><span>Signs and displays</span></div>
-          </article>
-          <article class="project-card" aria-hidden="true">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=70" alt="" />
-            <div><strong>Commercial Branding</strong><span>Clean professional look</span></div>
-          </article>
+      <div class="brand-marquee" aria-label="Brand names scrolling right to left">
+        <div class="brand-track">
+          <span>Retail Shops</span><span>Restaurants</span><span>Contractors</span><span>Clinics</span><span>Offices</span><span>Schools</span><span>Local Events</span><span>Real Estate</span>
+          <span>Retail Shops</span><span>Restaurants</span><span>Contractors</span><span>Clinics</span><span>Offices</span><span>Schools</span><span>Local Events</span><span>Real Estate</span>
         </div>
       </div>
     </section>
@@ -1437,7 +1431,7 @@
           <strong>Full Project Gallery</strong>
           <span>Scroll the bento gallery. Click any image to view full screen.</span>
         </div>
-        <button class="close-gallery" type="button" id="closeGallery">Close</button>
+        <button class="close-gallery" type="button" id="closeGallery" aria-label="Close gallery">×</button>
       </div>
     </div>
     <div class="container">
