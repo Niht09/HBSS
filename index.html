@@ -1010,73 +1010,27 @@
     .close-gallery,
     .lightbox-close,
     .lightbox-nav {
-      border: 0;
-      background: #4f5670;
-      color: #fff;
-      min-width: 48px;
-      min-height: 48px;
-      border-radius: 999px;
-      font-weight: 900;
-      cursor: pointer;
-    }
-
-    .full-bento {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      padding: 24px 0 60px;
-    }
-
-    .full-bento .bento-tile {
-      min-height: 260px;
-    }
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 2600;
-      background: rgba(0,0,0,0.92);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: min(100%, 1200px);
-      max-height: 82vh;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    .lightbox-close {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      z-index: 2;
-      font-size: 20px;
-      background: #fff;
-      color: var(--dark);
-    }
-
-    .lightbox-nav {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
-      width: 58px;
-      height: 58px;
-      font-size: 28px;
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      min-height: 56px;
+      padding: 0;
+      font-size: 30px;
+      line-height: 1;
       background: #fff;
       color: var(--dark);
       box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-    .lightbox-prev { left: 18px; }
-    .lightbox-next { right: 18px; }
+    .lightbox-prev { left: clamp(16px, 3vw, 48px); }
+    .lightbox-next { right: clamp(16px, 3vw, 48px); }
 
     @media (min-width: 640px) {
       .bento-grid,
@@ -1108,13 +1062,18 @@
       .gallery-btn {
         width: 100%;
       }
-      .lightbox-nav {
-        width: 48px;
-        height: 48px;
-        font-size: 22px;
+      .lightbox {
+        padding: 76px 58px 34px;
       }
-      .lightbox-prev { left: 8px; }
-      .lightbox-next { right: 8px; }
+      .lightbox-nav {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 24px;
+      }
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
     }
 
 
@@ -1951,8 +1910,7 @@
             <p>Send the project details on WhatsApp or use the quick quote section below.</p>
           </div>
           <div class="cta-actions">
-            
-            
+            <a class="btn btn-primary" href="#quoteName">Get Quote</a>
           </div>
         </div>
       </div>
@@ -1985,7 +1943,7 @@
 
         <form class="quote-box" action="mailto:sales@hbss.ca" method="post" enctype="text/plain">
           <h3>Quick Quote Request</h3>
-          <input type="text" name="name" placeholder="Your name" required />
+          <input id="quoteName" type="text" name="name" placeholder="Your name" required />
           <input type="tel" name="phone" placeholder="Phone number" />
           <input type="email" name="email" placeholder="Email address" />
           <select name="service">
