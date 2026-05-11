@@ -1116,18 +1116,454 @@
       .lightbox-prev { left: 8px; }
       .lightbox-next { right: 8px; }
     }
+
+
+  /* =========================================================
+     Vodafone-inspired corporate design system override
+     Source style: red brand band + charcoal institutional panels
+     ========================================================= */
+  :root {
+    --white: #ffffff;
+    --off-white: #f2f2f2;
+    --light: #f2f2f2;
+    --ink: #25282b;
+    --muted: #7e7e7e;
+    --soft: #bebebe;
+    --dark: #25282b;
+    --accent: #e60000;
+    --accent-dark: #ac1811;
+    --accent-soft: rgba(230,0,0,0.08);
+    --line: #e5e5e5;
+    --success: #19a463;
+    --radius: 6px;
+    --container: 1200px;
+  }
+
+  body {
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .top-strip,
+  .site-footer,
+  .cta,
+  .about-panel {
+    background: var(--dark) !important;
+  }
+
+  .site-header {
+    background: var(--white) !important;
+    border-bottom: 1px solid var(--line) !important;
+    backdrop-filter: none !important;
+  }
+
+  .nav-wrap {
+    min-height: 72px;
+  }
+
+  .brand-mark {
+    width: 132px !important;
+    height: 60px !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  .brand-mark img {
+    height: 58px !important;
+    width: auto !important;
+    max-width: 132px !important;
+    object-fit: contain !important;
+  }
+
+  .desktop-nav a,
+  .mobile-menu a {
+    color: var(--ink);
+    font-weight: 800;
+  }
+
+  .btn,
+  .gallery-btn {
+    min-height: 48px;
+    border-radius: 60px !important;
+    font-size: 14.4px;
+    font-weight: 800;
+    letter-spacing: 0.14px;
+    box-shadow: none !important;
+  }
+
+  .header-actions .btn {
+    min-width: 132px !important;
+  }
+
+  .btn-primary,
+  .sticky-mobile-cta a:nth-child(3),
+  .gallery-btn {
+    background: var(--accent) !important;
+    color: var(--white) !important;
+    border-color: var(--accent) !important;
+  }
+
+  .btn-primary:hover,
+  .gallery-btn:hover {
+    background: var(--accent-dark) !important;
+  }
+
+  .btn-light {
+    background: var(--white) !important;
+    color: #333333 !important;
+    border: 1px solid #333333 !important;
+  }
+
+  .hero {
+    background:
+      linear-gradient(rgba(37,40,43,0.58), rgba(37,40,43,0.58)),
+      url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=75') center/cover no-repeat !important;
+    color: var(--white) !important;
+    border-bottom: 0 !important;
+    padding: clamp(72px, 8vw, 110px) 0 clamp(64px, 7vw, 96px) !important;
+  }
+
+  .hero .eyebrow {
+    background: rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    color: var(--white) !important;
+    border-radius: 24px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .hero h1 {
+    color: var(--white) !important;
+    text-transform: uppercase;
+    font-size: clamp(56px, 9vw, 126px) !important;
+    line-height: 0.88 !important;
+    letter-spacing: -2px !important;
+    font-weight: 800 !important;
+    max-width: 980px !important;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.82) !important;
+    font-size: clamp(18px, 2vw, 21px) !important;
+    line-height: 1.45 !important;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+  }
+
+  .hero-image,
+  .bento-tile,
+  .project-card,
+  .card,
+  .quote-box,
+  .contact-line,
+  .stat {
+    border-radius: 6px !important;
+    box-shadow: none !important;
+  }
+
+  .stat,
+  .brand-track span,
+  .section-alt,
+  .quote-box {
+    background: var(--off-white) !important;
+  }
+
+  .red-band,
+  .vodafone-red-band {
+    width: 100%;
+    height: 64px;
+    background: var(--accent);
+  }
+
+  .section {
+    padding: clamp(56px, 7vw, 96px) 0 !important;
+  }
+
+  .section-head h2 {
+    color: var(--ink);
+    font-size: clamp(40px, 5vw, 64px) !important;
+    line-height: 0.95 !important;
+    letter-spacing: -1.5px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+  }
+
+  .section-head p,
+  .card p,
+  .contact-line span,
+  .project-card span,
+  .brand-track span + span,
+  .site-footer p,
+  .site-footer a {
+    color: var(--muted);
+  }
+
+  .icon-box,
+  .process-card::before {
+    background: var(--accent) !important;
+    color: var(--white) !important;
+    border-radius: 50% !important;
+  }
+
+  .card,
+  .contact-line,
+  .quote-box,
+  .project-card,
+  .bento-tile,
+  .brand-track span {
+    border: 1px solid var(--line) !important;
+  }
+
+  .brand-marquee,
+  .portfolio-strip {
+    background: var(--white) !important;
+    border-top: 1px solid var(--line) !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+
+  .brand-track span {
+    color: var(--ink) !important;
+    background: var(--off-white) !important;
+    border-radius: 6px !important;
+  }
+
+  .floating-whatsapp {
+    box-shadow: none !important;
+  }
+
+  .close-gallery,
+  .lightbox-close,
+  .lightbox-nav {
+    border-radius: 50% !important;
+    background: var(--white) !important;
+    color: var(--ink) !important;
+    border: 1px solid var(--line) !important;
+    box-shadow: none !important;
+  }
+
+  .close-gallery {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .quote-box input,
+  .quote-box textarea,
+  .quote-box select {
+    border-radius: 2px !important;
+    border-color: #333333 !important;
+  }
+
+  @media (max-width: 600px) {
+    .vodafone-red-band,
+    .red-band { height: 40px; }
+    .hero h1 { font-size: clamp(48px, 15vw, 72px) !important; }
+    .section-head h2 { font-size: clamp(34px, 10vw, 48px) !important; }
+    .brand-mark { width: 104px !important; height: 54px !important; }
+    .brand-mark img { height: 48px !important; max-width: 104px !important; }
+  }
+
+
+  /* Desktop expanded header behavior */
+  .desktop-preheader {
+    display: none;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .preheader-grid {
+    min-height: 144px;
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .preheader-logo img {
+    height: 104px;
+    width: auto;
+    max-width: 210px;
+    object-fit: contain;
+  }
+
+  .preheader-info {
+    text-align: center;
+    color: var(--ink);
+  }
+
+  .preheader-info strong {
+    display: block;
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 900;
+  }
+
+  .preheader-info span {
+    display: block;
+    margin-top: 8px;
+    font-size: 18px;
+    line-height: 1.35;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .preheader-estimate {
+    justify-self: end;
+    min-width: 180px;
+  }
+
+  @media (min-width: 768px) {
+    .top-strip {
+      display: none !important;
+    }
+
+    .desktop-preheader {
+      display: block;
+    }
+
+    .site-header .nav-wrap {
+      min-height: 96px !important;
+    }
+
+    .site-header .brand-mark {
+      width: 132px !important;
+      height: 76px !important;
+    }
+
+    .site-header .brand-mark img {
+      height: 72px !important;
+      max-width: 132px !important;
+    }
+
+    .site-header.is-compact .desktop-preheader {
+      display: none;
+    }
+
+    .site-header.is-compact .nav-wrap {
+      min-height: 96px !important;
+    }
+
+    .site-header.is-compact .brand-mark {
+      width: 132px !important;
+      height: 76px !important;
+    }
+
+    .site-header.is-compact .brand-mark img {
+      height: 72px !important;
+      max-width: 132px !important;
+    }
+  }
+
+  @media (max-width: 920px) and (min-width: 768px) {
+    .preheader-grid {
+      grid-template-columns: 170px 1fr 170px;
+    }
+
+    .preheader-logo img {
+      height: 86px;
+    }
+
+    .preheader-info strong {
+      font-size: 20px;
+    }
+
+    .preheader-info span {
+      font-size: 16px;
+    }
+  }
+
+
+  .location-grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .location-card {
+    background: var(--dark);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 28px;
+  }
+
+  .location-card span {
+    display: block;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .location-card strong {
+    display: block;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.05;
+    letter-spacing: -0.8px;
+    margin-bottom: 14px;
+  }
+
+  .location-card p {
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 22px;
+  }
+
+  .map-wrap {
+    min-height: 360px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--off-white);
+  }
+
+  .map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    border: 0;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .location-grid {
+      grid-template-columns: 0.82fr 1.18fr;
+      align-items: stretch;
+    }
+  }
   </style>
 </head>
 <body>
 
   <div class="top-strip">
     <div class="container">
-      <span>Custom signs, decals, banners, vehicle graphics and print solutions.</span>
-      <span>Call: +1-343-989-5043</span>
+      <span>31 Rayborn Crescent, St. Albert, AB T8N 4A9</span>
+      <span>+1-343-989-5043 | sales@hbss.ca</span>
     </div>
   </div>
 
-  <header class="site-header">
+  <header class="site-header" id="siteHeader">
+    <div class="desktop-preheader" id="desktopPreheader">
+      <div class="container preheader-grid">
+        <a href="#home" class="preheader-logo" aria-label="HB Sign Shop Home">
+          <img src="images/logo.svg" alt="HB Sign Shop Logo">
+        </a>
+        <div class="preheader-info">
+          <strong>31 Rayborn Crescent, St. Albert, AB</strong>
+          <span>Call: +1 (780) 945-7860 • Email: sales@hbss.ca</span>
+        </div>
+        <a class="btn btn-primary preheader-estimate" href="#contact">Free Estimate</a>
+      </div>
+    </div>
     <div class="container">
       <div class="nav-wrap">
         <a href="#home" class="brand" aria-label="HB Sign Shop Home">
@@ -1145,7 +1581,6 @@
         </nav>
 
         <div class="header-actions">
-          <a class="btn btn-light" href="tel:+13439895043">Call</a>
           <a class="btn btn-primary" href="#contact">Get Quote</a>
         </div>
 
@@ -1163,7 +1598,7 @@
         <a href="#process">Process</a>
         <a href="#contact">Contact</a>
         <div class="mobile-menu-actions">
-          <a class="btn btn-dark" href="tel:+13439895043">Call Now</a>
+          
           <a class="btn btn-whatsapp" href="https://wa.me/13439895043">WhatsApp</a>
         </div>
       </div>
@@ -1198,6 +1633,8 @@
         </div>
       </div>
     </section>
+
+    <div class="vodafone-red-band" aria-hidden="true"></div>
 
     <section class="bento-preview" id="gallery-preview">
       <div class="container">
@@ -1329,7 +1766,7 @@
           </div>
           <div class="cta-actions">
             <a class="btn btn-whatsapp" href="https://wa.me/13439895043">WhatsApp Us</a>
-            <a class="btn btn-light" href="tel:+13439895043">Call Now</a>
+            
           </div>
         </div>
       </div>
@@ -1351,7 +1788,7 @@
             
             <div class="contact-line">
               <span>Email</span>
-              <a href="mailto:info@hbss.ca">info@hbss.ca</a>
+              <a href="mailto:sales@hbss.ca">sales@hbss.ca</a>
             </div>
             <div class="contact-line">
               <span>Service Area</span>
@@ -1360,7 +1797,7 @@
           </div>
         </div>
 
-        <form class="quote-box" action="mailto:info@hbss.ca" method="post" enctype="text/plain">
+        <form class="quote-box" action="mailto:sales@hbss.ca" method="post" enctype="text/plain">
           <h3>Quick Quote Request</h3>
           <input type="text" name="name" placeholder="Your name" required />
           <input type="tel" name="phone" placeholder="Phone number" />
@@ -1378,6 +1815,27 @@
           <textarea name="message" placeholder="Tell us what you need, size, quantity, timeline, or attach files by email after submitting."></textarea>
           <button class="btn btn-primary" type="submit">Submit Request</button>
         </form>
+      </div>
+    </section>
+
+    <section id="location" class="section location-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Location</h2>
+          <p>Visit HB Sign Shop or contact us for signs, decals, banners, vehicle graphics and print projects.</p>
+        </div>
+
+        <div class="location-grid">
+          <div class="location-card">
+            <span>Address</span>
+            <strong>31 Rayborn Crescent, St. Albert, AB T8N 4A9</strong>
+            <p>Use the map below or open the Google Maps link for directions.</p>
+            <a class="btn btn-primary" href="https://share.google/6IMjVObcrf4zsmocz" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+          <div class="map-wrap">
+            <iframe title="HB Sign Shop location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=31%20Rayborn%20Crescent%2C%20St.%20Albert%2C%20AB%20T8N%204A9&output=embed"></iframe>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -1453,6 +1911,21 @@
   </div>
 
   <script>
+    const siteHeader = document.getElementById('siteHeader');
+
+    function updateDesktopHeader() {
+      if (!siteHeader) return;
+      if (window.innerWidth >= 768 && window.scrollY > 10) {
+        siteHeader.classList.add('is-compact');
+      } else {
+        siteHeader.classList.remove('is-compact');
+      }
+    }
+
+    window.addEventListener('scroll', updateDesktopHeader, { passive: true });
+    window.addEventListener('resize', updateDesktopHeader);
+    updateDesktopHeader();
+
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = mobileMenu.querySelectorAll('a');
